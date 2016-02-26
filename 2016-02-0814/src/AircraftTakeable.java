@@ -3,8 +3,7 @@
  */
 public interface AircraftTakeable {
 
-    public void freeLaneFor(Vehicle vehicle); // Освободить полосу
-    public void shoot(int count, Vehicle vehicle);
-    public void releaseProtectionTo(Vehicle vehicle); // Выпустить защиту
+    public void giveFreeLine(Place place); // Освободить полосу
+    public void sendHelp(Vehicle vehicle); // Подослать помощь
 
 }

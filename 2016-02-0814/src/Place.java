@@ -1,5 +1,5 @@
 /**
- * Created by Denis on 12.02.16.
+ * Created by Denis on 25.02.16.
  */
-public interface Place {
+public class Place implements Position {
 }

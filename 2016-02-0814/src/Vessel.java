@@ -1,36 +1,48 @@
+import java.util.ArrayList;
+
 /**
  * Created by Denis on 12.02.16.
  */
-public class Vessel implements Vehicle, Swimmable {
+public class Vessel implements Vehicle {
 
-    int maxSpeed;
-    int weight;
+    double speed;
+    boolean started;
     Human pilot;
-
-
-    @Override
-    public void plunge(float deep) {
-        System.out.print("plunge");
-    }
-
-    @Override
-    public void surfaceBreak(float speed) {
-        System.out.print("surface with speed " + speed);
-    }
-
-    @Override
-    public void swimUnder(Vehicle vehicle) {
-        System.out.print("swim under");
-    }
+    ArrayList<Human> passengers;
 
     @Override
     public void start() {
-        System.out.print("starting vessel");
+        started = true;
     }
 
     @Override
-    public void addDrivers(Pilot pilot, Navigator navigator) {
+    public void stop() {
+        started = false;
+    }
 
+    @Override
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    @Override
+    public void setPosition(Position position) {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+
+    @Override
+    public void addDrivers(Human pilot, Human navigator) {
+
+    }
+
+    @Override
+    public ArrayList<Human> getDrivers() {
+        return null;
     }
 
     @Override
@@ -39,7 +51,12 @@ public class Vessel implements Vehicle, Swimmable {
     }
 
     @Override
-    public void addDriver(Driver driver) {
+    public void addDriver(Human pilot) {
+
+    }
+
+    @Override
+    public void addPassenger(Human passenger) {
 
     }
 

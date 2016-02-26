@@ -3,21 +3,27 @@ import java.util.ArrayList;
 /**
  * Created by Denis on 12.02.16.
  */
-class Submarine implements Vehicle, Swimmable {
+class Submarine implements Vehicle, Diveable {
 
-    int maxDeep;
+    double deep;
     int capacity;
     ArrayList<Human> humansOnBoard;
 
     @Override
-    public void plunge(float deep) {
-        System.out.print("plunge");
+    public void setDeep(double deep) {
+
     }
 
     @Override
-    public void surfaceBreak(float speed) {
-        System.out.print("surface with speed:" + speed);
+    public void plunge() {
+
     }
+
+    @Override
+    public void surfaceBreak(double deep) {
+
+    }
+
 
     @Override
     public void swimUnder(Vehicle vehicle) {
@@ -30,9 +36,35 @@ class Submarine implements Vehicle, Swimmable {
     }
 
     @Override
-    public void addDrivers(Pilot pilot, Navigator navigator) {
+    public void stop() {
 
     }
+
+    @Override
+    public void setSpeed(double speed) {
+
+    }
+
+    @Override
+    public void setPosition(Position position) {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
+
+    @Override
+    public void addDrivers(Human pilot, Human navigator) {
+
+    }
+
+    @Override
+    public ArrayList<Human> getDrivers() {
+        return null;
+    }
+
 
     @Override
     public void removeDrivers() {
@@ -40,7 +72,12 @@ class Submarine implements Vehicle, Swimmable {
     }
 
     @Override
-    public void addDriver(Driver driver) {
+    public void addDriver(Human pilot) {
+
+    }
+
+    @Override
+    public void addPassenger(Human passenger) {
 
     }
 

@@ -3,22 +3,36 @@
  */
 public class Navigator implements Human { // Штурман
     Pilot partner;
-    Vehicle vehicle;
-    int age;
+    Age age;
     int weight;
 
     @Override
-    public void sitDown(Vehicle vehicle) {
-        System.out.print("sit in aircraft");
+    public void setAge(Age age) {
+        this.age = age;
     }
 
     @Override
-    public void getOut(Vehicle vehicle) {
-        System.out.print("get out aircraft");
+    public void goTo(Position position) {
+
     }
 
     @Override
-    public void look(Vehicle vehicle) {
-        System.out.print("look on aircraft");
+    public void sayTo(Human human) {
+
+    }
+
+    @Override
+    public void sitDownInto(Vehicle vehicle) {
+
+    }
+
+    @Override
+    public void goOutFrom(Vehicle vehicle) {
+
+    }
+
+    @Override
+    public void blind() {
+
     }
 }

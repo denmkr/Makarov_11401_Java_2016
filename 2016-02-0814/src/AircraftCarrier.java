@@ -3,40 +3,40 @@ import java.util.ArrayList;
 /**
  * Created by Denis on 12.02.16.
  */
-public class AircraftCarrier implements AircraftTakeable, Swimmable, Place {
+public class AircraftCarrier implements Position, AircraftTakeable, Warable {
 
+    ArrayList<Place> freeLines;
     int vehicleCount;
     int length;
     int height;
     ArrayList<Vehicle> vehicles;
 
+    public int getfreeLinesCount() {
+        return freeLines.size();
+    }
+
     @Override
-    public void freeLaneFor(Vehicle vehicle) {
-        System.out.print("free Lane");
+    public void giveFreeLine(Place place) {
+        if (getfreeLinesCount()!=0)
+            freeLines.remove(getfreeLinesCount());
+    }
+
+    @Override
+    public void sendHelp(Vehicle vehicle) {
+
     }
 
     @Override
     public void shoot(int count, Vehicle vehicle) {
-        System.out.print("shooting");
+        Antiaircraft antiaircraft = new Antiaircraft();
+        for (int i=0; i<count; i++) {
+            antiaircraft.shoot(vehicle);
+        }
     }
 
     @Override
     public void releaseProtectionTo(Vehicle vehicle) {
-        System.out.print("release protection");
-    }
-
-    @Override
-    public void plunge(float deep) { // Погрузиться
-        System.out.print("plunge");
-    }
-
-    @Override
-    public void surfaceBreak(float speed) {
-        System.out.print("surface");
-    }
-
-    @Override
-    public void swimUnder(Vehicle vehicle) {
-        System.out.print("swim under");
+        Flash protection = new Flash();
+        protection.releaseTo(vehicle.getDrivers());
     }
 }

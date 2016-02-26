@@ -3,8 +3,9 @@
  */
 public interface Flyable {
 
+    public void setHeight(double height);
+
     public void landOn(Place place);
     public void hopOff(Place place);
-    public void flyOver(Vehicle vehicle);
 
 }

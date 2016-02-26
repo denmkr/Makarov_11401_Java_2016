@@ -1,7 +1,7 @@
 /**
  * Created by Denis on 12.02.16.
  */
-public class Pilot implements Human {
+public class Pilot implements Human, AircraftControllable {
 
     int age;
     int weight;
@@ -10,17 +10,53 @@ public class Pilot implements Human {
 
 
     @Override
-    public void sitDown(Vehicle vehicle) {
-        System.out.print("sit in aircraft");
+    public void pullWheel() {
+
     }
 
     @Override
-    public void getOut(Vehicle vehicle) {
-        System.out.print("get out aircraft");
+    public void pushWheel() {
+
     }
 
     @Override
-    public void look(Vehicle vehicle) {
-        System.out.print("look on aircraft");
+    public void flyBy(Aircraft aircraft) {
+
     }
+
+    @Override
+    public void requestLanding(Aircraft aircraft) {
+
+    }
+
+    @Override
+    public void blind() {
+
+    }
+
+    @Override
+    public void setAge(Age age) {
+
+    }
+
+    @Override
+    public void goTo(Position position) {
+
+    }
+
+    @Override
+    public void sayTo(Human human) {
+
+    }
+
+    @Override
+    public void sitDownInto(Vehicle vehicle) {
+
+    }
+
+    @Override
+    public void goOutFrom(Vehicle vehicle) {
+
+    }
+
 }
