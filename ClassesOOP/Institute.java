@@ -4,6 +4,13 @@
 public class Institute {
     private String name;
 
+    public Institute() {
+    }
+
+    public Institute(String name) {
+        this.name = name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
