@@ -10,7 +10,7 @@ public class Main {
         Navigator navigator = new Navigator(); // Штурман
         aircraft.addDrivers(pilot, navigator); // Добавляем в самолет штурмана и пилота
 
-        Place place = new Ground(); // Создаем место для посадок (земля)
+        Place place = new Place(); // Создаем место для посадок
         AircraftCarrier aircraftCarrier = new AircraftCarrier(); // Создаем авианосца
 
         aircraft.landOn(place); // Самолет садится на землю
@@ -19,13 +19,12 @@ public class Main {
 
         Vehicle submarine = new Submarine(); // Создаем подлодку
 
-        aircraft.flyOver(submarine); // Самолет пролетает над подлодкой
 
         Aircraft opponentAircraft = new Aircraft(); // Создаем вражеский самолет
         aircraftCarrier.releaseProtectionTo(opponentAircraft); // Авианосец выпускает защиту против вражеского самолета
-        aircraftCarrier.freeLaneFor(aircraft); // Свобождает место для посадки первого
-
-        aircraft.landOn(aircraftCarrier); // Самолет садится на авианосец
+        Airport airport = new Airport();
+        pilot.requestLanding(aircraft);
+        aircraft.landOn(place); // Самолет садится на авианосец
 
 
     }
