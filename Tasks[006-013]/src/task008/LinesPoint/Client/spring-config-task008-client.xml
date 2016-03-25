@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean class="task008.LinesPoint.Client.Game" id="game">
+    </bean>
+
+    <bean class="java.awt.GridBagConstraints" id="constraints">
+    </bean>
+
+    <bean class="java.awt.GridBagLayout" id="gridLayout">
+    </bean>
+
+    <bean class="javax.swing.JPanel" id="gridPanel">
+        <constructor-arg ref="gridLayout"></constructor-arg>
+    </bean>
+
+    <bean class="javax.swing.JPanel" id="gridPanelField">
+        <constructor-arg ref="gridLayout"></constructor-arg>
+    </bean>
+
+    <bean class="java.awt.BorderLayout" id="borderLayout">
+    </bean>
+
+    <bean class="javax.swing.JPanel" id="borderPanel">
+        <constructor-arg ref="borderLayout"></constructor-arg>
+    </bean>
+
+    <bean class="javax.swing.JLabel" id="label">
+    </bean>
+
+</beans>

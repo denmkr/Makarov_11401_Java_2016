@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean class="task010.Age" id="age1">
+        <constructor-arg value="1"></constructor-arg>
+        <constructor-arg value="2"></constructor-arg>
+        <constructor-arg value="10"></constructor-arg>
+    </bean>
+    <bean class="task010.Age" id="age2">
+        <constructor-arg value="2"></constructor-arg>
+        <constructor-arg value="5"></constructor-arg>
+        <constructor-arg value="3"></constructor-arg>
+    </bean>
+
+    <bean class="task010.AircraftCarrier" id="carrier">
+    </bean>
+    <bean class="task010.Place" id="place">
+    </bean>
+    <bean class="task010.Place" id="placeWithName">
+        <constructor-arg value="my place"></constructor-arg>
+    </bean>
+    <util:list id="vehicles" value-type="task010.interfaces.Vehicle">
+        <ref bean="aircraft"/>
+    </util:list>
+    <util:list id="lines" value-type="task010.Place">
+        <ref bean="place"/>
+    </util:list>
+    <util:list id="passengers" value-type="task010.interfaces.Human">
+        <ref bean="passenger"/>
+    </util:list>
+    <util:list id="humans" value-type="task010.interfaces.Human">
+        <ref bean="passenger"/>
+    </util:list>
+
+    <bean class="task010.Pilot" id="pilot">
+    </bean>
+    <bean class="task010.Pilot" id="passenger">
+    </bean>
+    <bean class="task010.Navigator" id="navigator">
+    </bean>
+    <bean class="task010.Aircraft" id="aircraft">
+    </bean>
+    <bean class="task010.Aircraft" id="fullAircraft">
+        <constructor-arg ref="pilot"></constructor-arg>
+        <constructor-arg ref="navigator"></constructor-arg>
+    </bean>
+    <bean class="task010.Aircraft" id="aircraftWithAge">
+        <property name="age" ref="age1"></property>
+    </bean>
+    <bean class="task010.Aircraft" id="aircraftWithSpeed300">
+        <property name="speed" value="300"></property>
+    </bean>
+    <bean class="task010.Aircraft" id="aircraftWithPlace">
+        <property name="place" ref="place"></property>
+    </bean>
+    <bean class="task010.Aircraft" id="fullAircraftWithSpeedHeight">
+        <property name="place" ref="place"></property>
+        <property name="speed" value="10"></property>
+        <property name="height" value="100"></property>
+    </bean>
+    <bean class="task010.Aircraft" id="aircraftWithPassengers">
+        <property name="passengers" ref="passengers"></property>
+    </bean>
+    <bean class="task010.Aircraft" id="aircraftWithNavigator">
+        <property name="navigator" ref="navigator"></property>
+    </bean>
+    <bean class="task010.Aircraft" id="aircraftWithPilot">
+        <property name="pilot" ref="pilot"></property>
+    </bean>
+
+    <bean class="task010.Amphibian" id="amphibian">
+    </bean>
+    <bean class="task010.Amphibian" id="fullAmphibian">
+        <constructor-arg ref="pilot"></constructor-arg>
+        <constructor-arg ref="navigator"></constructor-arg>
+    </bean>
+    <bean class="task010.Amphibian" id="amphibianWithAge">
+        <property name="age" ref="age1"></property>
+    </bean>
+    <bean class="task010.Amphibian" id="amphibianWithSpeed300">
+        <property name="speed" value="300"></property>
+    </bean>
+    <bean class="task010.Amphibian" id="amphibianWithDeep">
+        <property name="deep" value="10"></property>
+    </bean>
+    <bean class="task010.Amphibian" id="amphibianWithPlace">
+        <property name="place" ref="place"></property>
+    </bean>
+    <bean class="task010.Amphibian" id="fullAmphibianWithSpeed">
+        <property name="place" ref="place"></property>
+        <property name="speed" value="10"></property>
+    </bean>
+    <bean class="task010.Amphibian" id="amphibianWithPassengers">
+        <property name="passengers" ref="passengers"></property>
+    </bean>
+    <bean class="task010.Amphibian" id="amphibianWithNavigator">
+        <property name="navigator" ref="navigator"></property>
+    </bean>
+    <bean class="task010.Amphibian" id="amphibianWithPilot">
+        <property name="pilot" ref="pilot"></property>
+    </bean>
+
+    <bean class="task010.Airport" id="airport">
+    </bean>
+    <bean class="task010.Airport" id="airportWithFreeLines">
+        <property name="freeLines" ref="lines"></property>
+    </bean>
+    <bean class="task010.Airport" id="airportWithTrap">
+        <property name="trap" ref="trap"></property>
+    </bean>
+
+    <bean class="task010.Trap" id="trap">
+    </bean>
+    <bean class="task010.Trap" id="trapWithAircraft">
+        <property name="aircraft" ref="aircraft"></property>
+    </bean>
+
+    <bean class="task010.Flash" id="flash">
+    </bean>
+
+    <bean class="task010.Antiaircraft" id="antiaircraft">
+    </bean>
+
+    <bean class="task010.Navigator" id="navigatorWithAge">
+        <property name="age" ref="age1"></property>
+    </bean>
+
+
+</beans>
