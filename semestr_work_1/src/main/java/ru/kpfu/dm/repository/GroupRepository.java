@@ -1,0 +1,27 @@
+package ru.kpfu.dm.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+import ru.kpfu.dm.entity.ProductGroup;
+
+import java.util.List;
+
+/**
+ * Created by Denis on 14.04.2016.
+ */
+
+@Repository
+public interface GroupRepository extends JpaRepository<ProductGroup, Long> {
+
+    List<ProductGroup> findAll();
+    ProductGroup findByGroupId(String groupId);
+
+    @Modifying
+    @Transactional
+    @Query("UPDATE ProductGroup productGroup SET productGroup.name = ?2 where productGroup.groupId = ?1")
+    void updateGroupByGroupId(String groupId, String name);
+
+}
