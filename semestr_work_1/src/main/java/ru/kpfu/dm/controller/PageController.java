@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/")
 public class PageController {
 
-    @RequestMapping(value = "home", method = RequestMethod.GET)
+    @RequestMapping(value = "", method = RequestMethod.GET)
     public String page(ModelMap model, HttpSession session) {
 
         return "home";
