@@ -28,10 +28,10 @@
         <div class="inside">
         <@security.authorize access="hasRole('ROLE_ADMIN')">
             <a href="/">
-            <div class="home">
-                <img src="/images/home.png">
-                <span class="title">Перейти на сайт</span>
-            </div>
+                <div class="home">
+                    <img src="/images/home.png">
+                    <span class="title">Перейти на сайт</span>
+                </div>
             </a>
         </@security.authorize>
         <@security.authorize access="isAnonymous()">
@@ -61,15 +61,15 @@
         </div>
     </div>
     <ul class="menu">
-        <li><a href="/admin/information" class="elem"><img src="/images/info.png">
+        <li><a class="elem"><img src="/images/info.png">
             Информация</a></li>
-        <li><a href="/admin/users" class="elem"><img src="/images/users.png">
+        <li><a class="elem"><img src="/images/users.png">
             Пользователи</a></li>
-        <li><a href="/admin/orders" class="elem"><img src="/images/orders.png">
+        <li><a class="elem"><img src="/images/orders.png">
             Заказы</a></li>
         <li>
             <div class="elem selected"><img src="/images/products.png">
-                <a href="/admin/products">Товары</a>
+                <a href="/catalog">Товары</a>
                 <div class="menu_icon closed"></div>
             </div>
             <ul class="sub_menu">
@@ -85,13 +85,16 @@
     <header>
         <div class="user">
             <div class="text">
-                Информация
+                Заказы
             </div>
         </div>
 
     </header>
 
     <div class="table_panel">
+    <#list products as product>
+        <div>${product.name}</div>
+    </#list>
     </div>
 
     <footer>

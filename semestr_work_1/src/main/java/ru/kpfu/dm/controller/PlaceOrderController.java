@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.kpfu.dm.entity.*;
 import ru.kpfu.dm.modul.XMLParser;
 import ru.kpfu.dm.repository.CartProductRepository;
-import ru.kpfu.dm.service.CartProductService;
-import ru.kpfu.dm.service.GroupService;
-import ru.kpfu.dm.service.ProductService;
-import ru.kpfu.dm.service.UserService;
+import ru.kpfu.dm.service.*;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -42,21 +39,28 @@ public class PlaceOrderController {
     private JavaMailSender mailSender;
     @Autowired
     CartProductService cartProductService;
+    @Autowired
+    OrderService orderService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String sendMail(ModelMap model, HttpSession session) throws MessagingException {
+    public String placeOrder(ModelMap model, HttpSession session) throws MessagingException {
         Cart cart;
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof AnonymousAuthenticationToken) {
             if (session.getAttribute("cart") == null) session.setAttribute("cart", new Cart());
             cart = (Cart) session.getAttribute("cart");
+            orderService.createOrder(cart);
+
             session.setAttribute("cart", null); // Очищаем корзину
         }
         else {
             cart = cartProductService.getCart();
+            orderService.createOrder(cart);
+
             cartProductService.removeCart(cart);
         }
+
 
         // creates a simple e-mail object
         MimeMessage mimeMessage = mailSender.createMimeMessage();

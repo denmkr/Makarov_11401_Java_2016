@@ -27,10 +27,12 @@
     <div class="shop-header">
         <div class="inside">
         <@security.authorize access="hasRole('ROLE_ADMIN')">
-            <div class="admin">
-                <img src="/images/admin.png">
-                <span class="title">Панель администратора</span>
+            <a href="/">
+            <div class="home">
+                <img src="/images/home.png">
+                <span class="title">Перейти на сайт</span>
             </div>
+            </a>
         </@security.authorize>
         <@security.authorize access="isAnonymous()">
             <a href="/signin">
@@ -55,18 +57,19 @@
     <div class="logo">
         <div class="logo_text">
             <div class="logo_text_head">Отражение</div>
+            <div class="logo_text_sub">Админ панель</div>
         </div>
     </div>
     <ul class="menu">
-        <li><a class="elem"><img src="/images/paying.png">
+        <li><a href="/admin/information" class="elem"><img src="/images/info.png">
             Информация</a></li>
-        <li><a class="elem"><img src="/images/shipping.png">
+        <li><a href="/admin/users" class="elem"><img src="/images/users.png">
             Пользователи</a></li>
-        <li><a href="/contacts" class="elem"><img src="/images/contacts.png">
+        <li><a href="/admin/orders" class="elem"><img src="/images/orders.png">
             Заказы</a></li>
         <li>
-            <div class="elem selected"><img src="/images/catalog.png">
-                <a href="/catalog">Товары</a>
+            <div class="elem selected"><img src="/images/products.png">
+                <a href="/admin/products">Товары</a>
                 <div class="menu_icon closed"></div>
             </div>
             <ul class="sub_menu">
@@ -81,7 +84,6 @@
 <div class="main">
     <header>
         <div class="user">
-            <img class="img" src="/images/user.png">
             <div class="text">
                 Информация
             </div>

@@ -10,7 +10,7 @@
             <div class="text">Отражение</div>
         </div>
         <ul class="menu">
-            <a href="/home"><li>Главная</li></a>
+            <a href="/"><li>Главная</li></a>
             <a href="/catalog"><li>Каталог</li></a>
             <a href="/shipping"><li>Доставка</li></a>
             <a href="/contacts"><li>Контакты</li></a>

@@ -1,3 +1,5 @@
+<#ftl encoding="utf-8">
+
 <div class="table_panel">
     <table class="cart_table">
         <thead>

@@ -235,10 +235,10 @@ aside .logo_text_head {
 
 aside .logo_text_sub {
     color: #aaa;
-    font-size: 10px;
+    font-size: 12px;
     display: block;
     margin-top: -3px;
-    margin-left: 76px;
+    margin-left: 80px;
 }
 
 aside .menu {
@@ -338,7 +338,6 @@ aside ul.sub_menu > li > ul > li > ul > li > .elem {
 
 .main .user {
     display: inline-block;
-    line-height: 90px;
     padding: 0 44px;
     transition: background 0.3s ease-out;
 }
@@ -360,7 +359,8 @@ aside ul.sub_menu > li > ul > li > ul > li > .elem {
 .main .user .text {
     display: inline-block;
     color: #637086;
-    font-size: 1.4rem;
+    line-height: 90px;
+    font-size: 2rem;
     font-weight: 300;
     /*color: #373e4a;*/
 }
@@ -837,7 +837,7 @@ select::-ms-expand {
     color: #fff;
 }
 
-.shop-header .admin {
+.shop-header .home {
     float: left;
     display: inline-block;
     padding: 8px 10px;
@@ -846,28 +846,22 @@ select::-ms-expand {
     transition: 0.4s ease-out;
 }
 
-.shop-header .admin:hover {
+.shop-header .home:hover {
     border-color: #fff;
 }
 
-.shop-header .admin.current {
+.shop-header .home.current {
     border-color: #fff;
 }
 
-.shop-header .admin img {
-    width: 19px;
-    margin-right: 6px;
+.shop-header .home img {
+    width: 20px;
+    margin-right: 10px;
     display: inline-block;
     vertical-align: middle;
 }
 
-.shop-header .admin .size {
-    margin-right: 15px;
-    color: #fff;
-    font-weight: 700;
-}
-
-.shop-header .admin span {
+.shop-header .home span {
     color: #fff;
 }
 

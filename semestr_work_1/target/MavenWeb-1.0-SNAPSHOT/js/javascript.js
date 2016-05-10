@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     setCurrentMenu();
 
-    if (window.location.pathname != "/signin" && window.location.pathname != "/signup") {
+    if (window.location.pathname != "/signin" && window.location.pathname != "/signup" && window.location.pathname != "/admin") {
         $("header").addClass("animated fadeInUp");
 
         if (window.location.pathname == "/catalog") {
@@ -54,7 +54,9 @@ $(window).load(function() {
     $(".back_text").addClass("animated fadeInUp");
     $(".back").addClass("animated fadeInUp");
 
-    $(window).stellar();
+    if (window.location.pathname != "/signin" && window.location.pathname != "/signup" && window.location.pathname != "/admin") {
+        $(window).stellar();
+    }
 });
 
 $(window).resize(function(){

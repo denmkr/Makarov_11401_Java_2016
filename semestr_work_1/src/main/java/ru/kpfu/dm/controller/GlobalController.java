@@ -45,4 +45,5 @@ public final class GlobalController {
         model.addAttribute("cart_size", cart.getSize());
     }
 
+
 }

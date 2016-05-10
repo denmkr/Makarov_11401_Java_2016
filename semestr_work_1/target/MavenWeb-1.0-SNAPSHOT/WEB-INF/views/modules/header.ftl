@@ -33,10 +33,12 @@
         <div class="shop-header">
             <div class="inside">
             <@security.authorize access="hasRole('ROLE_ADMIN')">
+                <a href="/admin">
                 <div class="admin">
                     <img src="/images/admin.png">
                     <span class="title">Панель администратора</span>
                 </div>
+                </a>
             </@security.authorize>
                 <a href="/cart">
                     <div class="cart">

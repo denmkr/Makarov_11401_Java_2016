@@ -1,3 +1,5 @@
+<#ftl encoding="utf-8">
+
 <ul class="breadcrumbs">
     <li><a href="">МФУ</a></li>
     <li><img src="/images/down.png"></li>
