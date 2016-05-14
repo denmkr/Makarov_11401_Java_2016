@@ -1,0 +1,28 @@
+/** Add css rules here for your application. */
+
+h1 {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+body, td, a, div, .p {
+    font-family: arial, sans-serif
+}
+
+.customLabel {
+    color: darkred;
+    font-size: 20px;
+    border-bottom: 1px solid blue;
+    padding-bottom: 5px;
+    transition: 0.4s ease-out;
+    width: 0px;
+}
+
+.customLabel:hover {
+    width: 54px;
+}
+
+#slot3 {
+    width: 100px;
+}

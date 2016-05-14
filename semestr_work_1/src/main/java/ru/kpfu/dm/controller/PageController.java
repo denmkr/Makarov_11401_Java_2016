@@ -17,7 +17,8 @@ import javax.servlet.http.HttpSession;
 public class PageController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String page(ModelMap model, HttpSession session) {
+    public String page(ModelMap model, HttpSession session, HttpServletRequest request) {
+        System.out.println(request.getRemoteAddr());
 
         return "home";
     }

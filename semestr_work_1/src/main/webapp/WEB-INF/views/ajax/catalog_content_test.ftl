@@ -19,7 +19,7 @@
         <#list products.content as product>
         <tr>
             <td><a>${product.articule}</a></td>
-            <td><a style="color: #4e7fa9; text-decoration: underline;" href="/catalog/product/${product.articule}">${product.name}</a></td>
+            <td><a style="color: #4e7fa9; text-decoration: underline;" href="/product/${product.articule}">${product.name}</a></td>
             <td><a>${product.stock}</a> шт.</td>
             <td><a>${product.price}</a> ${product.currency}</td>
             <td onclick="addToCart('${product.articule}')" class="into_cart">

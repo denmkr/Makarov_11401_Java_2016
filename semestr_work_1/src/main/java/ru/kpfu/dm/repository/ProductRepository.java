@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kpfu.dm.entity.Product;
 import ru.kpfu.dm.entity.ProductGroup;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("UPDATE Product product SET product.name = ?2, product.stock = ?3, product.price = ?4, product.currency = ?5, product.productGroup = ?6 where product.articule = ?1")
     void updateProductByArticule(String articule, String name, int stock, float price, String currency, ProductGroup productGroup);
 
-    Page<Product> findByGroup_IdAndStockGreaterThanAndNameContains(long id, int num, String name, Pageable pageable);
+    Page<Product> findByProductGroupInAndStockGreaterThanAndNameContains(Collection<ProductGroup> groups, int num, String name, Pageable pageable);
     Page<Product> findByStockGreaterThanAndNameContainingIgnoreCase(int num, String name, Pageable pageable);
 
 }

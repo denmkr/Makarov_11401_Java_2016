@@ -91,7 +91,7 @@ public class Product {
     /* */
     private ProductGroup group;
 
-    @ManyToOne(targetEntity = ProductGroup.class)
+    @ManyToOne(targetEntity = ProductGroup.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id", referencedColumnName = "id")
     public ProductGroup getProductGroup() {
         return group;

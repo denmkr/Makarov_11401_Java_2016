@@ -30,7 +30,7 @@ public class AdminPanelController {
     }
 
     @RequestMapping(value = "/orders", method = RequestMethod.GET)
-    public String information(ModelMap model) {
+    public String orders(ModelMap model) {
         model.addAttribute("orders", orderService.getOrders());
         return "admin/orders";
     }
@@ -47,4 +47,11 @@ public class AdminPanelController {
         return "admin/products";
     }
 
+    @RequestMapping(value = "/information", method = RequestMethod.GET)
+    public String information(ModelMap model) {
+        model.addAttribute("information", productService.findAll());
+        return "admin/information";
+    }
+
 }
+

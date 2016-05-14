@@ -74,7 +74,7 @@ public class XMLParser {
             relations = getRelationsList(list); // Получаем отношения групп между собой
 
             for (int i=0; i<relations.size(); i++) {
-                System.out.println(relations.get(i).getRoot() + " " + relations.get(i).getRoot());
+                System.out.println(relations.get(i).getGroupId() + " " + relations.get(i).getChildGroupId());
             }
 
 
@@ -117,6 +117,8 @@ public class XMLParser {
                     Element eElement = (Element) nNode;
 
                     String article = eElement.getElementsByTagName("Артикул").item(0).getTextContent();
+                    article = article.replaceAll("\\s+", "");
+
                     String name = eElement.getElementsByTagName("Наименование").item(0).getTextContent();
                     String groupId = eElement.getElementsByTagName("Группы").item(0).getChildNodes().item(1).getTextContent();
 
@@ -210,7 +212,7 @@ public class XMLParser {
 
             toRelations();
 
-            relation.setChild(group.getId());
+            relation.setChildGroupId(group.getId());
             relations.add(relation);
             group = root;
 

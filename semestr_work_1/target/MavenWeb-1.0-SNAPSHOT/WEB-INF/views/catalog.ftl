@@ -25,53 +25,48 @@
                     <aside>
                         <div class="title">Категории</div>
                         <ul class="aside_menu">
-                            <li><a class="elem">МФУ</a></li>
-                            <li><a class="elem">Кондиционеры</a></li>
-                            <li><a href="/contacts" class="elem">Принтеры</a></li>
+
                             <li>
                                 <div class="elem selected">
-                                    <a href="/catalog">Расходные материалы</a>
-                                    <div class="menu_icon closed"></div>
+                                    <a onclick="$(this).parent('.elem').addClass('current');" rel="${group.groupId}">${group.name}</a>
+                                    <#if group.childGroups?size!=0><div class="menu_icon closed"></div></#if>
                                 </div>
-                                <ul class="sub_menu">
-                                    <li>
-                                        <div class="elem"><a>Brother</a>
-                                            <div class="menu_icon closed"></div>
-                                        </div>
-                                        <ul class="sub_menu">
-                                            <li><div class="elem"><a>Brother</a>
-                                                <div class="menu_icon closed"></div>
+                                <#if group.childGroups??>
+                                    <#list group.childGroups as group1>
+                                    <ul class="sub_menu">
+                                        <li>
+                                            <div class="elem">
+                                                <a rel="${group1.groupId}">${group1.name}</a>
+                                                <#if group1.childGroups?size!=0><div class="menu_icon closed"></div></#if>
                                             </div>
+                                            <#if group1.childGroups??>
+                                                <#list group1.childGroups as group2>
                                                 <ul class="sub_menu">
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Brother Brother Brother</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                                </ul></li>
-                                            <li><div class="elem"><a>Samsung</a></div></li>
-                                        </ul>
-                                    </li>
-                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                    <li><div class="elem"><a>Samsung</a></div></li>
-                                </ul>
+                                                    <li>
+                                                        <div class="elem">
+                                                            <a rel="${group2.groupId}">${group2.name}</a>
+                                                            <#if group2.childGroups?size!=0><div class="menu_icon closed"></div></#if>
+                                                        </div>
+                                                        <#if group2.childGroups??>
+                                                            <#list group2.childGroups as group3>
+                                                            <ul class="sub_menu">
+                                                                <li>
+                                                                    <div class="elem">
+                                                                        <a rel="${group3.groupId}">${group3.name}</a>
+                                                                        <#if group3.childGroups?size!=0><div class="menu_icon closed"></div></#if>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                            </#list>
+                                                        </#if>
+                                                    </li>
+                                                </ul>
+                                                </#list>
+                                            </#if>
+                                        </li>
+                                    </ul>
+                                    </#list>
+                                </#if>
                             </li>
                         </ul>
                     </aside>

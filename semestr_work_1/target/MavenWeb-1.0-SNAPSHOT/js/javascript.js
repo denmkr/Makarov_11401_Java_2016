@@ -7,7 +7,9 @@ $(document).ready(function () {
     if (window.location.pathname != "/signin" && window.location.pathname != "/signup" && window.location.pathname != "/admin") {
         $("header").addClass("animated fadeInUp");
 
-        if (window.location.pathname == "/catalog") {
+        var pathArray = window.location.pathname.split( '/' );
+
+        if (pathArray[1] == "catalog") {
             $(".main aside").addClass("animated fadeInUp");
             $(".main .content").addClass("animated fadeInUp");
 
@@ -31,6 +33,7 @@ $(document).ready(function () {
                     scrollTop: 100
                 }, 500);
             });
+
         }
     }
 
@@ -81,14 +84,14 @@ function filterProducts() {
     }
 
     xmlhttp.onloadstart = function() {
-        $(".catalog-container").removeClass("animated fadeInUp");
+        $(".catalog-container").removeClass("animated fadeIn");
     }
 
     xmlhttp.onload = function() {
         $('html, body').animate({
             scrollTop: 0
         }, 400);
-        $(".catalog-container").addClass("animated fadeInUp");
+        $(".catalog-container").addClass("animated fadeIn");
     }
 
     var msg = $(".filter_form").serialize();
@@ -133,7 +136,6 @@ function setCurrentMenu() {
 
 }
 
-
 $(document).on("click", ".paginator li", function() {
 
     var xmlhttp;
@@ -158,7 +160,7 @@ $(document).on("click", ".paginator li", function() {
         $('html, body').animate({
             scrollTop: 0
         }, 400);
-        $(".catalog-container").addClass("animated fadeInUp");
+        $(".catalog-container").addClass("animated fadeIn");
     }
 
     var msg = $(".filter_form").serialize();
@@ -189,12 +191,12 @@ function addToCart(articule) {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             $(".shop-header .cart .size").html(xmlhttp.responseText);
-            $(".shop-header .cart").addClass("animated wobble");
+            $(".shop-header .cart").addClass("animated flash");
         }
     }
 
     xmlhttp.onloadstart = function() {
-        $(".shop-header .cart").removeClass("animated wobble");
+        $(".shop-header .cart").removeClass("animated flash");
     }
 
     var msg = "articule=" + articule;
@@ -219,12 +221,14 @@ function removeFromCart(articule) {
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             $(".shop-header .cart .size").html(xmlhttp.responseText);
-            $(".shop-header .cart").addClass("animated wobble");
+            $(".shop-header .cart").addClass("animated flash");
+
+            getCart();
         }
     }
 
     xmlhttp.onloadstart = function() {
-        $(".shop-header .cart").removeClass("animated wobble");
+        $(".shop-header .cart").removeClass("animated flash");
     }
 
     var msg = "articule=" + articule;
@@ -233,5 +237,40 @@ function removeFromCart(articule) {
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.send(msg);
+
+}
+
+function getCart() {
+
+    var xmlhttp2;
+    if (window.XMLHttpRequest) {
+        xmlhttp2 = new XMLHttpRequest();
+    }
+    else {
+        xmlhttp2 = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp2.onreadystatechange = function () {
+        if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+            $(".cart-container").html(xmlhttp2.responseText);
+        }
+    }
+
+    xmlhttp2.onloadstart = function() {
+        $(".cart-container").removeClass("animated fadeInUp");
+    }
+
+    xmlhttp2.onload = function() {
+        $('html, body').animate({
+            scrollTop: 0
+        }, 400);
+        $(".cart-container").addClass("animated fadeInUp");
+    }
+
+
+    xmlhttp2.open("GET", window.location.pathname + "?ajax=1", true);
+    xmlhttp2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    xmlhttp2.send("");
 
 }

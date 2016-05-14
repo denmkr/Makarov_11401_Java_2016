@@ -25,6 +25,15 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MySampleApplicationService</servlet-name>
+        <servlet-class>ru.kpfu.dm.mySampleApplication.server.MySampleApplicationServiceImpl</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MySampleApplicationService</servlet-name>
+        <url-pattern>/MySampleApplication/MySampleApplicationService</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -59,7 +68,6 @@
         <session-timeout>2</session-timeout>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
-
 
 
 </web-app>

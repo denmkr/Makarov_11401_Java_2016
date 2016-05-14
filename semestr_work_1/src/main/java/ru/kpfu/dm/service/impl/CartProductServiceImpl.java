@@ -31,6 +31,7 @@ public class CartProductServiceImpl implements CartProductService {
     public boolean addProduct(Product product) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CartProduct cartProduct = new CartProduct();
+        // cartProductRepository.findByUserIdAndProductId()
 
         if (cartProductRepository.findByUserIdAndProductId(userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId()) != null) {
             cartProductRepository.updateProductInCart(2 , userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
@@ -71,7 +72,6 @@ public class CartProductServiceImpl implements CartProductService {
 
         if (cartProduct.getCount() > 1) cartProductRepository.updateProductInCart(1 , userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
         else cartProductRepository.delete(cartProduct);
-
 
     }
 

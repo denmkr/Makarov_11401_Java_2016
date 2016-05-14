@@ -26,27 +26,9 @@
     </div>
     <div class="inside">
         <div style="width: 94%;" class="content">
-            <#if cart.products??>
-                <#if cart.size!=0>
-                    <#include "ajax/cart_content.ftl">
-                <#else>
-                    <div style="text-align: center;">
-                        <div style="font-size: 24px;color: #666;margin-top: 40px;">Ваша корзина пустая</div>
-                        <div style="margin-top: 50px;"><img style="width: 200px;" src="/images/emptycart.png"></div>
-
-                        <a href="/catalog"><div style="margin: 0 3%;
-margin-top: 100px;
-font-size: 1.1rem;
-color: #3c6689;
-padding: 20px 50px;
-display: inline-block;
-border: 1px solid #3c6689;
-transition: all 0.3s ease-out;
-cursor: pointer;">Перейти к каталогу</div></a>
-                    </div>
-                </#if>
-            </#if>
-
+            <div class="cart-container">
+                <#include "ajax/cart_content.ftl">
+            </div>
         </div>
     </div>
 </div>

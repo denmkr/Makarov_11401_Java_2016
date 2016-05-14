@@ -1,10 +1,11 @@
 package ru.kpfu.dm.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Denis on 07.05.16.
+ * Created by Denis on 12.05.16.
  */
 @Entity
 @Table(name = "product_groups", schema = "public", catalog = "mvc")
@@ -44,6 +45,42 @@ public class ProductGroup {
         this.name = name;
     }
 
+
+    private ProductGroup parentGroup;
+
+    @ManyToOne(cascade={CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JoinColumn(name="parent_group_id")
+    public ProductGroup getParentGroup() {
+        return parentGroup;
+    }
+
+    public void setParentGroup(ProductGroup parentGroup) {
+        this.parentGroup = parentGroup;
+    }
+
+    private List<ProductGroup> childGroups = new ArrayList<ProductGroup>();
+
+    @OneToMany(mappedBy="parentGroup", fetch = FetchType.EAGER)
+    public List<ProductGroup> getChildGroups() {
+        return childGroups;
+    }
+
+    public void setChildGroups(List<ProductGroup> childGroups) {
+        this.childGroups = childGroups;
+    }
+
+    /*
+    private List<Product> products;
+
+    @OneToMany(targetEntity = Product.class, mappedBy = "productGroup", fetch = FetchType.EAGER)
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+    */
 
     @Override
     public boolean equals(Object o) {

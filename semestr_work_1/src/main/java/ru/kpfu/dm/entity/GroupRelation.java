@@ -1,35 +1,37 @@
 package ru.kpfu.dm.entity;
 
+import javax.persistence.*;
+
 /**
- * Created by Denis on 08.02.16.
+ * Created by Denis on 12.05.16.
  */
+
 public class GroupRelation {
 
-    String root;
-    String child;
+    private String groupId;
+    private String childGroupId;
 
-    public GroupRelation(String root, String child) {
-        this.child = child;
-        this.root = root;
+    public GroupRelation(String groupId) {
+        this.groupId = groupId;
     }
 
-    public GroupRelation(String root) {
-        this.root = root;
+    public GroupRelation() {
     }
 
-    public void setChild(String child) {
-        this.child = child;
+    public String getGroupId() {
+        return groupId;
     }
 
-    public void setRoot(String root) {
-        this.root = root;
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
     }
 
-    public String getChild() {
-        return child;
+    public String getChildGroupId() {
+        return childGroupId;
     }
 
-    public String getRoot() {
-        return root;
+    public void setChildGroupId(String childGroupId) {
+        this.childGroupId = childGroupId;
     }
+
 }

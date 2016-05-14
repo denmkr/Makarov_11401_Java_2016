@@ -17,6 +17,6 @@ public interface ProductService {
     void addProducts(List<Product> products);
     boolean updateProducts(List<Product> products);
 
-    Page<Product> findAll(int page, String stock, String searchProduct, String sort);
+    Page<Product> findAll(String groupId, int page, String stock, String searchProduct, String sort);
     List<Product> findAll();
 }

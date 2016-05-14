@@ -2,7 +2,7 @@ package ru.kpfu.dm.service.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.kpfu.dm.entity.Product;
+import ru.kpfu.dm.entity.GroupRelation;
 import ru.kpfu.dm.entity.ProductGroup;
 import ru.kpfu.dm.repository.GroupRepository;
 import ru.kpfu.dm.service.GroupService;
@@ -40,7 +40,6 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public boolean updateGroups(List<ProductGroup> productGroups) {
         for (ProductGroup group : productGroups) {
-
             if (groupRepository.findByGroupId(group.getGroupId()) == null) {
                 groupRepository.saveAndFlush(group);
             }
@@ -49,6 +48,15 @@ public class GroupServiceImpl implements GroupService {
 
         return true;
     }
+
+    @Override
+    public boolean addParentsGroupsToGroups(List<GroupRelation> relations) {
+        for (GroupRelation groupRelation : relations) {
+            groupRepository.addParentGroupByGroupId(groupRepository.findByGroupId(groupRelation.getChildGroupId()).getId(), groupRepository.findByGroupId(groupRelation.getGroupId()));
+        }
+        return true;
+    }
+
 
     @Override
     public ProductGroup findByGroupId(String groupId) {

@@ -82,7 +82,7 @@
                 Уже зарегистрированы? <a href="/signin">Войти</a>
             </div>
         </div>
-        <a href="/home">
+        <a href="/">
             <div class="close animated fadeInUp">
                 <img src="/images/back_button.png">
                 <div>Вернуться на главную</div>

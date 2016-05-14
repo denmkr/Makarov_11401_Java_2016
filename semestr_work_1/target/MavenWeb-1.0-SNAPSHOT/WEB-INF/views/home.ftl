@@ -20,7 +20,7 @@
 <!-- Главный блок -->
 <div class="main">
     <div class="back catalog" data-stellar-background-ratio="0.5">
-        <div class="title">Каталог</div>
+        <div class="title">Главная</div>
     </div>
 
     <div class="inside">

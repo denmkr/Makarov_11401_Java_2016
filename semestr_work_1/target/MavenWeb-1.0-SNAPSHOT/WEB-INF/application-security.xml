@@ -16,7 +16,7 @@
         <intercept-url pattern="/user/**" access="hasAnyRole('ROLE_USER', 'ROLE_CUSTOM')" />
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/signin" access="hasRole('ROLE_ANONYMOUS')"  />
-        <form-login authentication-failure-url="/signin?error=true" default-target-url="/home" login-page="/signin"/>
+        <form-login authentication-failure-url="/signin?error=true" default-target-url="/" login-page="/signin"/>
         <logout logout-url="/logout" delete-cookies="JSESSIONID" />
         <remember-me
                 key="myAppKey"

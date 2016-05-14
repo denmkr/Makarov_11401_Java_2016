@@ -24,4 +24,9 @@ public interface GroupRepository extends JpaRepository<ProductGroup, Long> {
     @Query("UPDATE ProductGroup productGroup SET productGroup.name = ?2 where productGroup.groupId = ?1")
     void updateGroupByGroupId(String groupId, String name);
 
+    @Modifying
+    @Transactional
+    @Query("UPDATE ProductGroup productGroup SET productGroup.parentGroup = ?2 where productGroup.id = ?1")
+    void addParentGroupByGroupId(long id, ProductGroup parentGroup);
+
 }

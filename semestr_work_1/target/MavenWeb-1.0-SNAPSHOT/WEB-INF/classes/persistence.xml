@@ -13,10 +13,12 @@
     <mapping class="ru.kpfu.dm.entity.UserRole"/>
     <mapping class="ru.kpfu.dm.entity.CartProduct"/>
     <mapping class="ru.kpfu.dm.entity.ProductGroup"/>
-    <mapping class="ru.kpfu.dm.entity.ProductsEntity"/>
-    <mapping class="ru.kpfu.dm.entity.DayVisit"/>
     <mapping class="ru.kpfu.dm.entity.Order"/>
     <mapping class="ru.kpfu.dm.entity.Order"/>
+    <mapping class="ru.kpfu.dm.entity.GroupRelation"/>
+    <mapping class="ru.kpfu.dm.entity.GroupRelation"/>
+    <mapping class="ru.kpfu.dm.entity.ProductGroup"/>
+    <mapping class="ru.kpfu.dm.entity.ProductGroup"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
   </session-factory>

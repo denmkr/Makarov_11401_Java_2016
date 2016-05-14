@@ -36,6 +36,7 @@ public class UpdateDataController {
 
         groupService.updateGroups(parser.getProductGroups());
         productService.updateProducts(parser.getProducts());
+        groupService.addParentsGroupsToGroups(parser.getRelations());
 
         return "redirect:/home";
     }

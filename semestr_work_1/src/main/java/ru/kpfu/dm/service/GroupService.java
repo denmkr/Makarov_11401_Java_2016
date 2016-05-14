@@ -1,5 +1,7 @@
 package ru.kpfu.dm.service;
 
+import ru.kpfu.dm.entity.GroupRelation;
+import ru.kpfu.dm.entity.Product;
 import ru.kpfu.dm.entity.ProductGroup;
 
 import java.util.List;
@@ -16,5 +18,6 @@ public interface GroupService {
 
     void addGroups(List<ProductGroup> productGroups);
     boolean updateGroups(List<ProductGroup> productGroups);
+    boolean addParentsGroupsToGroups(List<GroupRelation> relations);
     ProductGroup findByGroupId(String groupId);
 }

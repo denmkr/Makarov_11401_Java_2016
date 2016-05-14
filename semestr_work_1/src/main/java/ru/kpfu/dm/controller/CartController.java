@@ -41,7 +41,7 @@ public class CartController {
     ProductService productService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getCart(ModelMap model, HttpSession session) {
+    public String getCart(ModelMap model, HttpSession session, @RequestParam(value = "ajax", required = false, defaultValue = "0") String ajax) {
 
         Cart cart;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -53,7 +53,8 @@ public class CartController {
 
         model.addAttribute("cart", cart);
 
-        return "cart";
+        if (ajax.equals("1")) return "ajax/cart_content";
+        else return "cart";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -61,18 +62,23 @@ public class CartController {
 
         Product product = new Product();
         product.setArticule(articule);
+        Cart cart;
 
         if (session.getAttribute("cart") == null) session.setAttribute("cart", new Cart());
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof AnonymousAuthenticationToken) {
-            Cart cart = (Cart) session.getAttribute("cart");
+            cart = (Cart) session.getAttribute("cart");
             Product product1 = productService.findByArticule(articule);
             cart.addProduct(product1);
             session.setAttribute("cart", cart);
         }
-        else cartProductService.addProduct(product);
+        else {
+            cartProductService.addProduct(product);
+            cart = cartProductService.getCart();
+        }
 
+        model.addAttribute("cart_size", cart.getSize());
         return "ajax/cart_size";
     }
 
@@ -81,16 +87,21 @@ public class CartController {
 
         Product product = new Product();
         product.setArticule(articule);
+        Cart cart;
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof AnonymousAuthenticationToken) {
-            Cart cart = (Cart) session.getAttribute("cart");
+            cart = (Cart) session.getAttribute("cart");
             Product product1 = productService.findByArticule(articule);
             cart.removeProduct(product1);
             session.setAttribute("cart", cart);
         }
-        else cartProductService.removeProduct(product);
+        else {
+            cartProductService.removeProduct(product);
+            cart = cartProductService.getCart();
+        }
 
+        model.addAttribute("cart_size", cart.getSize());
         return "ajax/cart_size";
     }
 
