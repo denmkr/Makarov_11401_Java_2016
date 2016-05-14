@@ -23,7 +23,7 @@ public class UploadFileController {
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
     public @ResponseBody
-    String uploadFileHandler(@RequestParam("name") String name,
+    String uploadFile(@RequestParam("name") String name,
                              @RequestParam("file") MultipartFile file,
                              HttpSession session) {
 
@@ -60,7 +60,7 @@ public class UploadFileController {
 
     @RequestMapping(value = "/uploadMultipleFile", method = RequestMethod.POST)
     public @ResponseBody
-    String uploadMultipleFileHandler(@RequestParam("name") String[] names,
+    String uploadMultipleFile(@RequestParam("name") String[] names,
                                      @RequestParam("file") MultipartFile[] files,
                                      HttpSession session) {
 

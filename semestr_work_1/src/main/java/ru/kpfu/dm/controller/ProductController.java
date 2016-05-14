@@ -24,7 +24,7 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping(value = "/product/{articule}", method = RequestMethod.GET)
-    public String pageCatalog(ModelMap model, @PathVariable(value = "articule") String articule) {
+    public String product(ModelMap model, @PathVariable(value = "articule") String articule) {
         Product product = productService.findByArticule(articule);
         model.addAttribute("product", product);
 

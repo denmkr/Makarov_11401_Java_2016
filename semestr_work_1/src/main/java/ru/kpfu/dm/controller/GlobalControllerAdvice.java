@@ -10,6 +10,7 @@ import ru.kpfu.dm.entity.Cart;
 import ru.kpfu.dm.service.CartProductService;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 
 
 /**
@@ -17,19 +18,15 @@ import javax.servlet.http.HttpSession;
  */
 
 @ControllerAdvice
-public final class GlobalController {
+public final class GlobalControllerAdvice {
 
     @Autowired
     CartProductService cartProductService;
 
     @ModelAttribute("username")
-    public String getUsername(){
+    public String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            String username = authentication.getName();
-            return username;
-        }
-        return null;
+        return authentication.getName();
     }
 
     @ModelAttribute

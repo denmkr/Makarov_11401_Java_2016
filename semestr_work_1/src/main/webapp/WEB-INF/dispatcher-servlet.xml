@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
@@ -11,6 +11,11 @@
     <context:component-scan base-package="ru.kpfu.dm"/>
     <mvc:annotation-driven />
     <mvc:default-servlet-handler />
+
+    <aop:aspectj-autoproxy/>
+    <bean id="catalogAspect" class="ru.kpfu.dm.aspect.ServiceAspect"/>
+    <bean id="controllerAspect" class="ru.kpfu.dm.aspect.ControllerAspect"/>
+    <bean id="signupAspect" class="ru.kpfu.dm.aspect.SignUpAspect"/>
 
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/views/"/>

@@ -41,7 +41,7 @@ public class CartController {
     ProductService productService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getCart(ModelMap model, HttpSession session, @RequestParam(value = "ajax", required = false, defaultValue = "0") String ajax) {
+    public String cart(ModelMap model, HttpSession session, @RequestParam(value = "ajax", required = false, defaultValue = "0") String ajax) {
 
         Cart cart;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

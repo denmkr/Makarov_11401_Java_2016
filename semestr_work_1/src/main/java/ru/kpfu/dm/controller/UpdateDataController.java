@@ -25,7 +25,7 @@ public class UpdateDataController {
     GroupService groupService;
 
     @RequestMapping(value = "database", method = RequestMethod.GET)
-    public String shipping(ModelMap model, HttpServletRequest request) {
+    public String database(ModelMap model, HttpServletRequest request) {
 
         return "database";
     }

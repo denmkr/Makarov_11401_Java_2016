@@ -35,7 +35,7 @@
             <a href="#">
                 <div class="cart">
                     <img src="/images/cart.png">
-                    <a class="size">${cart_size}</a>
+                    <span class="size"><#include "ajax/cart_size.ftl"></span>
                     <span class="title">Корзина</span>
                 </div>
             </a>

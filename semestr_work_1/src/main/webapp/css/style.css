@@ -1746,3 +1746,23 @@ select::-ms-expand {
 	padding-bottom: 300px;
 }
 
+@media screen and (max-height: 800px) {
+	.auth-content {
+		display: inline-block;
+		margin: 0 !important;
+		padding-top: 50px;
+		padding-bottom: 50px;
+
+		position: static;
+	}
+
+	.auth {
+		background: #3e4654;
+	}
+
+	.auth-container {
+		position: relative;
+		margin: 0;
+	}
+}
+

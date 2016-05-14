@@ -31,7 +31,6 @@ public class CartProductServiceImpl implements CartProductService {
     public boolean addProduct(Product product) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CartProduct cartProduct = new CartProduct();
-        // cartProductRepository.findByUserIdAndProductId()
 
         if (cartProductRepository.findByUserIdAndProductId(userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId()) != null) {
             cartProductRepository.updateProductInCart(2 , userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());

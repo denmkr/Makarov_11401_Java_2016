@@ -32,7 +32,7 @@
             <a href="#">
                 <div class="cart">
                     <img src="/images/cart.png">
-                    <a class="size">${cart_size}</a>
+                    <span class="size"><#include "ajax/cart_size.ftl"></span>
                     <span class="title">Корзина</span>
                 </div>
             </a>
@@ -64,7 +64,7 @@
                 <input type="text" name="j_username" placeholder="Логин">
                 <input type="password" name="j_password" placeholder="Пароль">
                 <input style="display: none;" type="checkbox" name="remember-me" checked="checked" />
-                <div class="button" onkeydown="" onclick="document.getElementById('auth').submit();">Войти</div>
+                <div class="button" onkeydown="" onclick="document.getElementById('signin_form').submit();">Войти</div>
             </form>
             <#if error??>
                 <div class="wrong_data">

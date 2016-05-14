@@ -32,12 +32,12 @@ public class CatalogController {
     UserService userService;
 
     @RequestMapping(value = "catalog", method = RequestMethod.GET)
-    public String catalog(ModelMap model) {
+    public String catalogPage(ModelMap model) {
         return "redirect:/catalog/page/1";
     }
 
     @RequestMapping(value = "catalog/page/{page}", method = RequestMethod.GET)
-    public String pageCatalog(ModelMap model, @RequestParam(value = "stock", required = false, defaultValue = "off") String stock,
+    public String catalog(ModelMap model, @RequestParam(value = "stock", required = false, defaultValue = "off") String stock,
                        @RequestParam(value = "sort", required = false, defaultValue = "name_ASC") String sort,
                        @RequestParam(value = "groupId", required = false, defaultValue = "0") String groupId,
                        @RequestParam(value = "search", required = false, defaultValue = "") String search,

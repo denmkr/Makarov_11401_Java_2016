@@ -26,7 +26,7 @@ public class SignUpController {
     UserRoleService userRoleService;
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String getSignup(ModelMap model) {
+    public String signupPage(ModelMap model) {
 
         model.addAttribute("signup_form", new SignUpForm());
         return "signup";
@@ -34,11 +34,6 @@ public class SignUpController {
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signup(@ModelAttribute("signup_form") @Valid SignUpForm form, BindingResult result) {
-
-        if (result.hasErrors()) {
-            return "signup";
-        }
-
         User user = new User();
         user.setUsername(form.getUsername());
         user.setEmail(form.getEmail());
@@ -51,7 +46,7 @@ public class SignUpController {
     }
 
     @RequestMapping(value = "/signup_success", method = RequestMethod.GET)
-    public String signup_success() {
+    public String signupSuccess() {
         return "signup_success";
     }
 }
