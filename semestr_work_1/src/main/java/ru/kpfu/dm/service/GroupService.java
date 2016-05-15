@@ -11,12 +11,12 @@ import java.util.List;
  */
 public interface GroupService {
     ProductGroup create(ProductGroup productGroup);
-    ProductGroup delete(long id);
+    boolean delete(long id);
     List<ProductGroup> findAll();
     ProductGroup update(ProductGroup productGroup);
     ProductGroup findById(long id);
 
-    void addGroups(List<ProductGroup> productGroups);
+    boolean addGroups(List<ProductGroup> productGroups);
     boolean updateGroups(List<ProductGroup> productGroups);
     boolean addParentsGroupsToGroups(List<GroupRelation> relations);
     ProductGroup findByGroupId(String groupId);

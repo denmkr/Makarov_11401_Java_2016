@@ -10,11 +10,11 @@ import java.util.List;
  */
 public interface ProductService {
     Product create(Product product);
-    Product delete(long id);
+    boolean delete(long id);
     Product update(Product product);
     Product findById(long id);
     Product findByArticule(String articule);
-    void addProducts(List<Product> products);
+    boolean addProducts(List<Product> products);
     boolean updateProducts(List<Product> products);
 
     Page<Product> findAll(String groupId, int page, String stock, String searchProduct, String sort);

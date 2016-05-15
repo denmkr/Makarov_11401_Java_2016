@@ -14,13 +14,13 @@ import java.util.List;
 public class GroupServiceImpl implements GroupService {
 
     @Resource
-    GroupRepository groupRepository;
+    public GroupRepository groupRepository;
 
     @Override
     @Transactional
     public ProductGroup create(ProductGroup productGroup) {
         ProductGroup createdProductGroup = productGroup;
-        return groupRepository.save(createdProductGroup);
+        return groupRepository.saveAndFlush(createdProductGroup);
     }
 
     @Override
@@ -31,10 +31,11 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional
-    public void addGroups(List<ProductGroup> productGroups) {
+    public boolean addGroups(List<ProductGroup> productGroups) {
         for (ProductGroup productGroup : productGroups) {
             groupRepository.saveAndFlush(productGroup);
         }
+        return true;
     }
 
     @Override
@@ -65,10 +66,10 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional
-    public ProductGroup delete(long id) {
+    public boolean delete(long id) {
         ProductGroup deletedProductGroup = groupRepository.findOne(id);
         groupRepository.delete(deletedProductGroup);
-        return deletedProductGroup;
+        return true;
     }
 
     @Override

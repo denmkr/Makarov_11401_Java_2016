@@ -22,13 +22,14 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
 
     @Resource
-    OrderRepository orderRepository;
+    public OrderRepository orderRepository;
     @Autowired
     UserService userService;
+    public Authentication authentication;
 
     @Override
     public boolean createOrder(Cart cart) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        authentication = SecurityContextHolder.getContext().getAuthentication();
         Order order = new Order();
 
         for (Product product : cart.getProducts()) {

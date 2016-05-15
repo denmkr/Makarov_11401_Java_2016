@@ -10,7 +10,7 @@ import ru.kpfu.dm.entity.Product;
 public interface CartProductService {
     boolean addProduct(Product product);
     Cart getCart();
-    void removeProduct(Product product);
-    void removeCart(Cart cart);
+    boolean removeProduct(Product product);
+    boolean removeCart(Cart cart);
 }
 

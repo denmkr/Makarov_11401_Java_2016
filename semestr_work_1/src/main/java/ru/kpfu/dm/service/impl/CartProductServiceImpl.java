@@ -20,11 +20,11 @@ import java.util.List;
 public class CartProductServiceImpl implements CartProductService {
 
     @Resource
-    CartProductRepository cartProductRepository;
+    public CartProductRepository cartProductRepository;
     @Autowired
-    UserService userService;
+    public UserService userService;
     @Autowired
-    ProductService productService;
+    public ProductService productService;
 
     @Override
     @Transactional
@@ -65,19 +65,22 @@ public class CartProductServiceImpl implements CartProductService {
 
     @Override
     @Transactional
-    public void removeProduct(Product product) {
+    public boolean removeProduct(Product product) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CartProduct cartProduct = cartProductRepository.findByUserIdAndProductId(userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
 
         if (cartProduct.getCount() > 1) cartProductRepository.updateProductInCart(1 , userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
         else cartProductRepository.delete(cartProduct);
 
+        return true;
     }
 
     @Override
-    public void removeCart(Cart cart) {
+    public boolean removeCart(Cart cart) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         cartProductRepository.deleteProductInCart(userService.findByUsername(authentication.getName()).getId());
+
+        return true;
     }
 
 }

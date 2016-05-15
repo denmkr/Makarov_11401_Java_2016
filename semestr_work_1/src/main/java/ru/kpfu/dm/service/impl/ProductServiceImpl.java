@@ -31,15 +31,15 @@ public class ProductServiceImpl implements ProductService {
     private static final int PAGE_SIZE = 15;
 
     @Resource
-    ProductRepository productRepository;
+    public ProductRepository productRepository;
     @Autowired
-    GroupService groupService;
+    public GroupService groupService;
 
     @Override
     @Transactional
     public Product create(Product product) {
         Product createdProduct = product;
-        return productRepository.save(createdProduct);
+        return productRepository.saveAndFlush(createdProduct);
     }
 
     @Override
@@ -56,11 +56,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public void addProducts(List<Product> products) {
+    public boolean addProducts(List<Product> products) {
         for (Product product : products) {
             product.setProductGroup(groupService.findByGroupId(product.getProductGroup().getGroupId()));
             productRepository.saveAndFlush(product);
         }
+        return true;
     }
 
     @Override
@@ -68,7 +69,6 @@ public class ProductServiceImpl implements ProductService {
     public boolean updateProducts(List<Product> products) {
         for (Product product : products) {
             product.setProductGroup(groupService.findByGroupId(product.getProductGroup().getGroupId()));
-            System.out.println(product.getArticule());
 
             if (productRepository.findByArticule(product.getArticule()) == null) {
                 productRepository.saveAndFlush(product);
@@ -81,10 +81,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public Product delete(long id) {
+    public boolean delete(long id) {
         Product deletedProduct = productRepository.findOne(id);
         productRepository.delete(deletedProduct);
-        return deletedProduct;
+        return true;
     }
 
     @Override
