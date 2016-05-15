@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 public class UserRoleServiceImpl implements UserRoleService {
 
     @Resource
-    UserRoleRepository userRoleRepository;
+    public UserRoleRepository userRoleRepository;
 
     @Override
     @Transactional
@@ -25,13 +25,7 @@ public class UserRoleServiceImpl implements UserRoleService {
         UserRole role = new UserRole();
         role.setUserId(user.getId());
         role.setAuthority("ROLE_USER");
-        return userRoleRepository.save(role);
-    }
-
-    @Override
-    @Transactional
-    public void changeUserRole(User user) {
-
+        return userRoleRepository.saveAndFlush(role);
     }
 
     @Override
@@ -40,6 +34,6 @@ public class UserRoleServiceImpl implements UserRoleService {
         UserRole role = new UserRole();
         role.setUserId(user.getId());
         role.setAuthority("ROLE_ADMIN");
-        return userRoleRepository.save(role);
+        return userRoleRepository.saveAndFlush(role);
     }
 }

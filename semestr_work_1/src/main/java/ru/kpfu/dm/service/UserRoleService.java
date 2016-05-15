@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface UserRoleService {
     UserRole createUser(User user);
-    void changeUserRole(User user);
+    // void changeUserRole(User user);
     UserRole createAdmin(User user);
 }

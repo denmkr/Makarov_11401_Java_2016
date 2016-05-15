@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import ru.kpfu.dm.entity.User;
 import ru.kpfu.dm.entity.UserRole;
 
+import java.util.List;
+
 /**
  * Created by Denis on 26.04.16.
  */

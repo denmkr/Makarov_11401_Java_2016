@@ -15,17 +15,15 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Resource
-    UserRepository userRepository;
-
-    @Autowired
-    BCryptPasswordEncoder bcryptEncoder;
+    public UserRepository userRepository;
 
     @Override
     @Transactional
     public User create(User user) {
+        BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder(12);
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         user.setEnabled(true);
-        return userRepository.save(user);
+        return userRepository.saveAndFlush(user);
     }
 
     @Override
@@ -59,15 +57,6 @@ public class UserServiceImpl implements UserService {
     public List<User> findAll() {
         List<User> users = userRepository.findAll();
         return users;
-    }
-
-    @Override
-    @Transactional
-    public User update(User user) {
-        User updatedUser = userRepository.findOne(user.getId());
-
-        updatedUser.setUsername(user.getUsername());
-        return updatedUser;
     }
 
 }

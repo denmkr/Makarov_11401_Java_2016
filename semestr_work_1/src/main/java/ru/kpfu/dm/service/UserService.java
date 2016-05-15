@@ -11,7 +11,6 @@ public interface UserService {
     User create(User user);
     User delete(long id);
     List<User> findAll();
-    User update(User user);
     User findById(long id);
     User findByUsername(String username);
     User findByEmail(String email);
