@@ -1,9 +1,15 @@
 <#ftl encoding="utf-8">
 
 <ul class="breadcrumbs">
-    <li><a href="">МФУ</a></li>
+    <#if currentGroup.parentGroup?? && currentGroup.parentGroup.parentGroup??>
+    <li><a rel="${currentGroup.parentGroup.parentGroup.groupId}">${currentGroup.parentGroup.parentGroup.name}</a></li>
     <li><img src="/images/down.png"></li>
-    <li><a href="">OKI</a></li>
+    </#if>
+    <#if currentGroup.parentGroup??>
+    <li><a rel="${currentGroup.parentGroup.groupId}">${currentGroup.parentGroup.name}</a></li>
+    <li><img src="/images/down.png"></li>
+    </#if>
+    <li><a rel="${currentGroup.groupId}">${currentGroup.name}</a></li>
 </ul>
 <div class="info">Показано ${products.totalElements} товаров</div>
 

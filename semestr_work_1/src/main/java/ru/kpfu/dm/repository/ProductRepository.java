@@ -30,7 +30,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("UPDATE Product product SET product.name = ?2, product.stock = ?3, product.price = ?4, product.currency = ?5, product.productGroup = ?6 where product.articule = ?1")
     void updateProductByArticule(String articule, String name, int stock, float price, String currency, ProductGroup productGroup);
 
-    Page<Product> findByProductGroupInAndStockGreaterThanAndNameContains(Collection<ProductGroup> groups, int num, String name, Pageable pageable);
+    Page<Product> findByProductGroupInAndStockGreaterThanAndNameContainingIgnoreCase(Collection<ProductGroup> groups, int num, String name, Pageable pageable);
     Page<Product> findByStockGreaterThanAndNameContainingIgnoreCase(int num, String name, Pageable pageable);
 
 }

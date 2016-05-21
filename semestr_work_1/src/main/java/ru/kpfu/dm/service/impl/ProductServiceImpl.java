@@ -92,6 +92,10 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> findAll(String groupId, int page, String stock, String searchProduct, String sort) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        if (groupId.isEmpty()) {
+            groupId = "18217feb-af67-11db-99a8-505054503030";
+        }
+
         int stockValue;
         if (stock.equals("off")) stockValue = -1;
         else stockValue = 0;
@@ -119,7 +123,7 @@ public class ProductServiceImpl implements ProductService {
             }
         }
 
-        Page<Product> productPage = productRepository.findByProductGroupInAndStockGreaterThanAndNameContains(groups, stockValue, searchProduct, pageRequest);
+        Page<Product> productPage = productRepository.findByProductGroupInAndStockGreaterThanAndNameContainingIgnoreCase(groups, stockValue, searchProduct, pageRequest);
 
         if (authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PARTNER"))) {
             for (Product product : productPage.getContent()) {

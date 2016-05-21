@@ -11,7 +11,7 @@
     <link href="/css/admin_style.css" rel="stylesheet" />
     <link href="/css/animate.css" rel="stylesheet" />
     <script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="/js/javascript.js"></script>
+    <script type="text/javascript" src="/js/admin_javascript.js"></script>
 </head>
 <body>
 
@@ -61,15 +61,15 @@
         </div>
     </div>
     <ul class="menu">
-        <li><a href="/admin/information" class="elem"><img src="/images/info.png">
+        <li><a rel="information" class="elem"><img src="/images/info.png">
             Информация</a></li>
-        <li><a href="/admin/users" class="elem"><img src="/images/users.png">
+        <li><a rel="users" class="elem"><img src="/images/users.png">
             Пользователи</a></li>
-        <li><a href="/admin/orders" class="elem"><img src="/images/orders.png">
+        <li><a rel="orders" class="elem"><img src="/images/orders.png">
             Заказы</a></li>
         <li>
             <div class="elem selected"><img src="/images/products.png">
-                <a href="/admin/products">Товары</a>
+                <a ref="products">Товары</a>
                 <div class="menu_icon closed"></div>
             </div>
             <ul class="sub_menu">

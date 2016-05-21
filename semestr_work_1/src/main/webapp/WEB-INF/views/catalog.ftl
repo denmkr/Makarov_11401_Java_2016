@@ -28,7 +28,7 @@
 
                             <li>
                                 <div class="elem selected">
-                                    <a onclick="$(this).parent('.elem').addClass('current');" rel="${group.groupId}">${group.name}</a>
+                                    <a rel="${group.groupId}">${group.name}</a>
                                     <#if group.childGroups?size!=0><div class="menu_icon closed"></div></#if>
                                 </div>
                                 <#if group.childGroups??>

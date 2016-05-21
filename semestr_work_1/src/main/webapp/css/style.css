@@ -999,13 +999,13 @@ header .menu li.current {
 
 aside .title {
 	padding: 10px 0;
-	font-size: 18px;
-	border-left: 4px solid #4e7fa9;
-	padding-left: 26px;
+	font-size: 24px;
+	/* border-left: 4px solid #4e7fa9; */
+	padding-left: 18px;
 	margin-bottom: 20px;
 	margin-right: 36px;
 	font-weight: 500;
-	color: #4e7fa9;
+	color: #3c6283;
 }
 
 aside .aside_menu {
@@ -1024,6 +1024,7 @@ aside .aside_menu li .elem {
 	transition: 0.3s ease-out;
 	position: relative;
 	padding-right: 30px;
+	border-left: 2px solid transparent;
 
 	cursor: pointer;
 	cursor: hand;
@@ -1056,6 +1057,7 @@ aside ul.aside_menu li .elem:hover {
 
 aside ul.aside_menu li .elem.current {
 	background: #fff;
+	border-left: 2px solid #547faa;
 }
 
 aside ul.aside_menu li .elem .menu_icon {
@@ -1229,6 +1231,8 @@ aside ul.sub_menu > li > ul > li > ul > li > .elem {
 	list-style-type: none;
 	display: inline-block;
 	vertical-align: top;
+
+	cursor: pointer;
 }
 
 .main .table_panel .breadcrumbs li a {

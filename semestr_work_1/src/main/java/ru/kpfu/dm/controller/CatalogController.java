@@ -39,11 +39,11 @@ public class CatalogController {
     @RequestMapping(value = "catalog/page/{page}", method = RequestMethod.GET)
     public String catalog(ModelMap model, @RequestParam(value = "stock", required = false, defaultValue = "off") String stock,
                        @RequestParam(value = "sort", required = false, defaultValue = "name_ASC") String sort,
-                       @RequestParam(value = "groupId", required = false, defaultValue = "0") String groupId,
+                       @RequestParam(value = "groupId", required = false, defaultValue = "18217feb-af67-11db-99a8-505054503030") String groupId,
                        @RequestParam(value = "search", required = false, defaultValue = "") String search,
                        @RequestParam(value = "ajax", required = false, defaultValue = "0") String ajax, @PathVariable(value = "page") int page) {
 
-        Page<Product> products = productService.findAll("18217feb-af67-11db-99a8-505054503030", page, stock, search, sort);
+        Page<Product> products = productService.findAll(groupId, page, stock, search, sort);
 
         int current = products.getNumber() + 1;
         int begin = Math.max(1, current - 3);
@@ -52,6 +52,8 @@ public class CatalogController {
         model.addAttribute("beginIndex", begin);
         model.addAttribute("endIndex", end);
         model.addAttribute("currentIndex", current);
+
+        model.addAttribute("currentGroup", groupService.findByGroupId(groupId));
 
         model.addAttribute("products", products);
 
