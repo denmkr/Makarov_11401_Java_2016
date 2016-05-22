@@ -1,5 +1,6 @@
 package ru.kpfu.dm.controller;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,7 @@ public class CatalogController {
                        @RequestParam(value = "search", required = false, defaultValue = "") String search,
                        @RequestParam(value = "ajax", required = false, defaultValue = "0") String ajax, @PathVariable(value = "page") int page) {
 
-        Page<Product> products = productService.findAll(groupId, page, stock, search, sort);
+        Page<Product> products = productService.findAll(groupId, page, stock, StringEscapeUtils.escapeHtml4(search), sort);
 
         int current = products.getNumber() + 1;
         int begin = Math.max(1, current - 3);

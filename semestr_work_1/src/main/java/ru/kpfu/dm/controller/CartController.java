@@ -61,19 +61,14 @@ public class CartController {
     public String addToCart(ModelMap model, @RequestParam(value = "articule", required = true) String articule, HttpSession session) {
 
         Product product = new Product();
-        System.out.println("-2");
         product.setArticule(articule);
-        System.out.println("-1");
         Cart cart;
 
-        System.out.println("0");
         if (session.getAttribute("cart") == null) session.setAttribute("cart", new Cart());
 
-        System.out.println("1");
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        System.out.println("2");
         if (authentication instanceof AnonymousAuthenticationToken) {
             cart = (Cart) session.getAttribute("cart");
             Product product1 = productService.findByArticule(articule);
@@ -82,11 +77,8 @@ public class CartController {
             session.setAttribute("cart", cart);
         }
         else {
-            System.out.println("3");
             cartProductService.addProduct(product);
-            System.out.println("4");
             cart = cartProductService.getCart();
-            System.out.println("5");
         }
 
         model.addAttribute("cart_size", cart.getSize());

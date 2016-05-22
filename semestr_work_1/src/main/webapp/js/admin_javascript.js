@@ -4,10 +4,8 @@ $(document).ready(function () {
 
     $("aside .menu li .elem").click(function (event) {
         event.stopPropagation();
-
         page = $(this).attr("rel");
         getPage();
-
     });
 
 });
@@ -43,7 +41,7 @@ function getPage() {
         $(".table_panel").addClass("animated fadeInUp");
     }
 
-    xmlhttp.open("GET", "/admin/" + page, true);
+    xmlhttp.open("POST", "/admin/" + page, true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xmlhttp.send("");

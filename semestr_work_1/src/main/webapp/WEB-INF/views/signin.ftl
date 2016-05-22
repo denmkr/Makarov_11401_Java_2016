@@ -29,10 +29,12 @@
 <div class="shop-header-container">
     <div class="shop-header">
         <div class="inside">
-            <a href="#">
+            <a href="/cart">
                 <div class="cart">
                     <img src="/images/cart.png">
-                    <span class="size"><#include "ajax/cart_size.ftl"></span>
+                        <span class="size">
+                        <#include "ajax/cart_size.ftl">
+                        </span>
                     <span class="title">Корзина</span>
                 </div>
             </a>

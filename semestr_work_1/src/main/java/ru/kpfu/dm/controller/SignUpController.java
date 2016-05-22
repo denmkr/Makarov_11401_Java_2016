@@ -1,5 +1,6 @@
 package ru.kpfu.dm.controller;
 
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,9 +36,9 @@ public class SignUpController {
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
     public String signup(@ModelAttribute("signup_form") @Valid SignUpForm form, BindingResult result) {
         User user = new User();
-        user.setUsername(form.getUsername());
-        user.setEmail(form.getEmail());
-        user.setPassword(form.getPassword());
+        user.setUsername(StringEscapeUtils.escapeHtml4(form.getUsername()));
+        user.setEmail(StringEscapeUtils.escapeHtml4(form.getEmail()));
+        user.setPassword(StringEscapeUtils.escapeHtml4(form.getPassword()));
 
         userService.create(user);
         userRoleService.createUser(user);

@@ -905,6 +905,34 @@ select, input {
 	color: #fff;
 }
 
+.shop-header .logout {
+	float: left;
+	display: inline-block;
+	padding: 8px 10px;
+	text-align: center;
+	border-bottom: 1px solid transparent;
+	transition: 0.4s ease-out;
+}
+
+.shop-header .logout:hover {
+	border-color: #fff;
+}
+
+.shop-header .logout.current {
+	border-color: #fff;
+}
+
+.shop-header .logout img {
+	width: 19px;
+	margin-right: 14px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.shop-header .logout span {
+	color: #fff;
+}
+
 .shop-header .user {
 	display: inline-block;
 	margin-left: -4px;

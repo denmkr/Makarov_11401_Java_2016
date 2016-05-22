@@ -32,6 +32,14 @@
     <div class="shop-header-container">
         <div class="shop-header">
             <div class="inside">
+            <@security.authorize access="isAuthenticated()">
+                <a href="/logout">
+                    <div class="logout">
+                        <img src="/images/logout.png">
+                        <span class="title">Выйти</span>
+                    </div>
+                </a>
+            </@security.authorize>
             <@security.authorize access="hasRole('ROLE_ADMIN')">
                 <a href="/admin">
                 <div class="admin">
@@ -63,6 +71,7 @@
                         <a href="/user">${username}</a>
                     </div>
                 </@security.authorize>
+
             </div>
         </div>
     </div>

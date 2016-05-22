@@ -68,8 +68,9 @@
         <li><a rel="orders" class="elem"><img src="/images/orders.png">
             Заказы</a></li>
         <li>
-            <div class="elem selected"><img src="/images/products.png">
-                <a ref="products">Товары</a>
+            <div rel="products" class="elem selected">
+                <img src="/images/products.png">
+                <a>Товары</a>
                 <div class="menu_icon closed"></div>
             </div>
             <ul class="sub_menu">
@@ -92,6 +93,7 @@
     </header>
 
     <div class="table_panel">
+        <#include "admin/ajax/information_content.ftl">
     </div>
 
     <footer>

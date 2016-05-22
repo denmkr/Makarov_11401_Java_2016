@@ -35,10 +35,22 @@ public class AdminPanelController {
         return "admin/orders";
     }
 
+    @RequestMapping(value = "/orders", method = RequestMethod.POST)
+    public String ordersAjax(ModelMap model) {
+        model.addAttribute("orders", orderService.getOrders());
+        return "admin/ajax/orders_content";
+    }
+
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String users(ModelMap model) {
         model.addAttribute("users", userService.findAll());
         return "admin/users";
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public String usersAjax(ModelMap model) {
+        model.addAttribute("users", userService.findAll());
+        return "admin/ajax/users_content";
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
@@ -47,10 +59,22 @@ public class AdminPanelController {
         return "admin/products";
     }
 
+    @RequestMapping(value = "/products", method = RequestMethod.POST)
+    public String productsAjax(ModelMap model) {
+        model.addAttribute("products", productService.findAll());
+        return "admin/ajax/products_content";
+    }
+
     @RequestMapping(value = "/information", method = RequestMethod.GET)
     public String information(ModelMap model) {
         model.addAttribute("information", productService.findAll());
         return "admin/information";
+    }
+
+    @RequestMapping(value = "/information", method = RequestMethod.POST)
+    public String informationAjax(ModelMap model) {
+        model.addAttribute("information", productService.findAll());
+        return "admin/ajax/information_content";
     }
 
 }
