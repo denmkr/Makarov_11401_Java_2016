@@ -65,7 +65,7 @@
             <div class="title">Ошибка 404</div>
             <div style="padding-bottom: 30px;">Страница не найдена</div>
         </div>
-        <a href="/home">
+        <a href="/">
             <div class="close animated fadeInUp">
                 <img src="/images/user.png">
                 <div>Вернуться на главную</div>

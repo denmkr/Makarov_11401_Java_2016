@@ -9,9 +9,22 @@ import javax.persistence.*;
 @Table(name = "cart_products", schema = "public", catalog = "mvc")
 public class CartProduct {
     private Long id;
-    private Long productId;
+
     private Long userId;
     private Integer count;
+
+    /* */
+    private Product product;
+
+    @ManyToOne(targetEntity = Product.class)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    public Product getProduct() {
+        return product;
+    }
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    /* */
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,16 +35,6 @@ public class CartProduct {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "product_id")
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
     }
 
     @Basic
@@ -62,7 +65,6 @@ public class CartProduct {
         CartProduct that = (CartProduct) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (productId != null ? !productId.equals(that.productId) : that.productId != null) return false;
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (count != null ? !count.equals(that.count) : that.count != null) return false;
 
@@ -72,7 +74,6 @@ public class CartProduct {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (productId != null ? productId.hashCode() : 0);
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (count != null ? count.hashCode() : 0);
         return result;

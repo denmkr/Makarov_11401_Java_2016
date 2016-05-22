@@ -9,6 +9,7 @@ import ru.kpfu.dm.repository.UserRepository;
 import ru.kpfu.dm.service.UserService;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -23,6 +24,10 @@ public class UserServiceImpl implements UserService {
         BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder(12);
         user.setPassword(bcryptEncoder.encode(user.getPassword()));
         user.setEnabled(true);
+
+        java.util.Date date = new java.util.Date();
+        user.setDate(new Timestamp(date.getTime()));
+
         return userRepository.saveAndFlush(user);
     }
 

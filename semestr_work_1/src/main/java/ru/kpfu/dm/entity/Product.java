@@ -128,4 +128,6 @@ public class Product {
         result = 31 * result + (currency != null ? currency.hashCode() : 0);
         return result;
     }
+
+
 }

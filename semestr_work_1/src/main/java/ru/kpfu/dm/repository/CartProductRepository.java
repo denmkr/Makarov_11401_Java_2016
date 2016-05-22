@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kpfu.dm.entity.CartProduct;
+import ru.kpfu.dm.entity.Product;
 
 import java.util.List;
 
@@ -20,8 +21,8 @@ public interface CartProductRepository extends JpaRepository<CartProduct, Long> 
 
     @Modifying
     @Transactional
-    @Query("UPDATE CartProduct cartProduct SET cartProduct.count = ?1 where cartProduct.userId = ?2 and cartProduct.productId = ?3")
-    void updateProductInCart(int count, long userId, long productId);
+    @Query("UPDATE CartProduct cartProduct SET cartProduct.count = ?1 where cartProduct.userId = ?2 and cartProduct.product = ?3")
+    void updateProductInCart(int count, long userId, Product product);
 
     @Modifying
     @Transactional

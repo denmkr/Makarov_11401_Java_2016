@@ -21,14 +21,16 @@
 <!-- Главный блок -->
 <div class="main">
     <div class="back contacts" data-stellar-background-ratio="0.5">
-        <div class="title">${product.name}</div>
+        <div class="title">Товар</div>
     </div>
 
     <div>
-        ${product.articule}
-        ${product.stock}
-        ${product.price}
-        ${product.currency}
+        <div><#if product.productGroup.parentGroup.parentGroup??>${product.productGroup.parentGroup.parentGroup.name}</#if> <#if product.productGroup.parentGroup??>${product.productGroup.parentGroup.name}</#if> ${product.productGroup.name}</div>
+        <div>${product.name}</div>
+        <div>${product.articule}</div>
+        <div>${product.stock}</div>
+        <div>${product.price}</div>
+        <div>${product.currency}</div>
     </div>
 </div>
 

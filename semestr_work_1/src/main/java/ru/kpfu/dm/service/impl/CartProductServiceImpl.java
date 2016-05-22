@@ -30,13 +30,18 @@ public class CartProductServiceImpl implements CartProductService {
     @Transactional
     public boolean addProduct(Product product) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        CartProduct cartProduct = new CartProduct();
 
-        if (cartProductRepository.findByUserIdAndProductId(userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId()) != null) {
-            cartProductRepository.updateProductInCart(2 , userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
+        CartProduct cartProduct;
+        cartProduct = cartProductRepository.findByUserIdAndProductId(userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
+
+        if (cartProduct != null) {
+            int count = cartProduct.getCount();
+            product = productService.findByArticule(product.getArticule());
+            cartProductRepository.updateProductInCart(count + 1, userService.findByUsername(authentication.getName()).getId(), product);
         }
         else {
-            cartProduct.setProductId(productService.findByArticule(product.getArticule()).getId());
+            cartProduct = new CartProduct();
+            cartProduct.setProduct(productService.findByArticule(product.getArticule()));
             cartProduct.setUserId(userService.findByUsername(authentication.getName()).getId());
             cartProduct.setCount(1);
             cartProductRepository.saveAndFlush(cartProduct);
@@ -51,14 +56,9 @@ public class CartProductServiceImpl implements CartProductService {
     public Cart getCart() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         List<CartProduct> cartProducts = cartProductRepository.findByUserId(userService.findByUsername(authentication.getName()).getId());
+
         Cart cart = new Cart();
-        Product product;
-        for (CartProduct cartProduct: cartProducts) {
-            for (int i=1; i<=cartProduct.getCount(); i++) {
-                product = productService.findById(cartProduct.getProductId());
-                cart.addProduct(product);
-            }
-        }
+        cart.setProducts(cartProducts);
 
         return cart;
     }
@@ -69,7 +69,11 @@ public class CartProductServiceImpl implements CartProductService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         CartProduct cartProduct = cartProductRepository.findByUserIdAndProductId(userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
 
-        if (cartProduct.getCount() > 1) cartProductRepository.updateProductInCart(1 , userService.findByUsername(authentication.getName()).getId(), productService.findByArticule(product.getArticule()).getId());
+        int count = cartProduct.getCount();
+        if (count > 1) {
+            product = productService.findByArticule(product.getArticule());
+            cartProductRepository.updateProductInCart(count - 1, userService.findByUsername(authentication.getName()).getId(), product);
+        }
         else cartProductRepository.delete(cartProduct);
 
         return true;

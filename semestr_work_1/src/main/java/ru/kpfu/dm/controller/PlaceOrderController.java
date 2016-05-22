@@ -121,8 +121,8 @@ public class PlaceOrderController {
 
         String htmlMsg = "<h3>Ваш заказ</h3>";
         htmlMsg += "<div>";
-        for (Product product : cart.getProducts()) {
-            htmlMsg = htmlMsg + "<div style='font-size: 20px;color: #555;'>" + product.getName() + "</div>";
+        for (CartProduct cartProduct : cart.getCartProducts()) {
+            htmlMsg = htmlMsg + "<div style='font-size: 20px;color: #555;'>" + cartProduct.getProduct().getName() + "</div>";
         }
         htmlMsg += "</div>";
         htmlMsg += "выавыаыва";
@@ -186,14 +186,14 @@ public class PlaceOrderController {
         cell.setPaddingTop(10);
 
         int i = 1;
-        for (Product product : cart.getProducts()) {
+        for (CartProduct cartProduct : cart.getCartProducts()) {
             if (i % 2 == 0) cell.setBackgroundColor(new BaseColor(238, 238, 238));
             else cell.setBackgroundColor(BaseColor.WHITE);
-            cell.setPhrase(new Phrase(product.getArticule(), dfont));
+            cell.setPhrase(new Phrase(cartProduct.getProduct().getArticule(), dfont));
             table.addCell(cell);
-            cell.setPhrase(new Phrase(product.getName(), dfont));
+            cell.setPhrase(new Phrase(cartProduct.getProduct().getName(), dfont));
             table.addCell(cell);
-            cell.setPhrase(new Phrase(product.getPrice().toString() + " " + product.getCurrency(), dfont));
+            cell.setPhrase(new Phrase(cartProduct.getProduct().getPrice().toString() + " " + cartProduct.getProduct().getCurrency(), dfont));
             table.addCell(cell);
 
             i++;

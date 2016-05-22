@@ -1740,6 +1740,13 @@ select::-ms-expand {
 	font-size: 0.9rem;
 }
 
+.main .cart-container .info {
+	color: #777;
+	margin: 0 3%;
+	margin-top: 10px;
+	margin-bottom: 40px;
+}
+
 .wrapper {
 	position: relative;
 	min-height: 100%;

@@ -1,4 +1,4 @@
-var groupId;
+var groupId = "";
 
 $(document).ready(function () {
 
@@ -105,6 +105,10 @@ function filterProducts() {
 
     var pathArray = window.location.pathname.split( '/' );
 
+    if (groupId === null) {
+        groupId = "";
+    }
+
     xmlhttp.open("GET", pathArray[0] + '/' + pathArray[1] + '/' + pathArray[2] + '/1' + "?ajax=1&" + "groupId=" + groupId + "&" + msg, true);
     xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -181,6 +185,10 @@ $(document).on("click", ".paginator li", function() {
     }
 
     var msg = $(".filter_form").serialize();
+
+    if (groupId === null) {
+        groupId = "";
+    }
 
     var pathArray = window.location.pathname.split( '/' );
 
@@ -278,9 +286,6 @@ function getCart() {
     }
 
     xmlhttp2.onload = function() {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 400);
         $(".cart-container").addClass("animated fadeInUp");
     }
 

@@ -40,10 +40,14 @@ public class TestCartProductService {
         cartProductService.userService = mock(UserServiceImpl.class);
 
         cartProduct1 = new CartProduct();
-        cartProduct1.setProductId(new Long(1));
+        Product product1 = mock(Product.class);
+        product1.setId(new Long(1));
+        cartProduct1.setProduct(product1);
 
         cartProduct2 = new CartProduct();
-        cartProduct2.setProductId(new Long(2));
+        Product product2 = mock(Product.class);
+        product2.setId(new Long(2));
+        cartProduct2.setProduct(product2);
 
         cartProducts = new ArrayList<CartProduct>();
         cartProducts.add(cartProduct1);

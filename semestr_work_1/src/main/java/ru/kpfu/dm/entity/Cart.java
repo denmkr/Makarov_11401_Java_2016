@@ -8,34 +8,72 @@ import java.util.List;
  */
 public class Cart {
 
-    private List<Product> products;
+    private List<CartProduct> cartProducts;
 
     public Cart() {
-        products = new ArrayList<Product>();
+        cartProducts = new ArrayList<CartProduct>();
     }
 
-    public Cart(List<Product> products) {
-        this.products = products;
+    public Cart(List<CartProduct> cartProducts) {
+        this.cartProducts = cartProducts;
     }
 
     public int getSize() {
-        return products.size();
+        int size = 0;
+
+        for (CartProduct cartProduct : cartProducts) {
+            size += cartProduct.getCount();
+        }
+
+        return size;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public float getPrice() {
+        float price = 0;
+        for (CartProduct cartProduct : cartProducts) {
+            price += cartProduct.getProduct().getPrice() * cartProduct.getCount();
+        }
+
+        return price;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public List<CartProduct> getCartProducts() {
+        return cartProducts;
+    }
+
+    public void setProducts(List<CartProduct> cartProducts) {
+        this.cartProducts = cartProducts;
     }
 
     public void addProduct(Product product) {
-        this.products.add(product);
+
+        for (CartProduct cartProduct : cartProducts) {
+            if (cartProduct.getProduct().equals(product)) {
+                cartProduct.setCount(cartProduct.getCount() + 1);
+                return;
+            }
+        }
+
+        CartProduct newCartProduct = new CartProduct();
+        newCartProduct.setProduct(product);
+        newCartProduct.setCount(1);
+
+        this.cartProducts.add(newCartProduct);
     }
 
     public void removeProduct(Product product) {
-        products.remove(product);
+        for (CartProduct cartProduct : cartProducts) {
+            if (cartProduct.getProduct().equals(product) && !cartProduct.getCount().equals(1)) {
+                cartProduct.setCount(cartProduct.getCount() - 1);
+                return;
+            }
+        }
+
+        CartProduct removedCartProduct = new CartProduct();
+        removedCartProduct.setProduct(product);
+        removedCartProduct.setCount(1);
+
+        cartProducts.remove(removedCartProduct);
     }
 
 

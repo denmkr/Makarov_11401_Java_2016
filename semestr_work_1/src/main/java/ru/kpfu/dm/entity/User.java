@@ -3,6 +3,8 @@ package ru.kpfu.dm.entity;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  * Created by Denis on 25.04.16.
@@ -16,6 +18,8 @@ public class User {
 
     private String email;
     private Boolean enabled;
+
+    private Timestamp date;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,7 +60,6 @@ public class User {
         this.email = email;
     }
 
-
     @Basic
     @Column(name = "enabled")
     public Boolean getEnabled() {
@@ -65,6 +68,16 @@ public class User {
 
     public void setEnabled(Boolean enabled) {
         this.enabled = enabled;
+    }
+
+    @Basic
+    @Column(name = "date")
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 
     @Override

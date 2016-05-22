@@ -32,8 +32,8 @@ public class OrderServiceImpl implements OrderService {
         authentication = SecurityContextHolder.getContext().getAuthentication();
         Order order = new Order();
 
-        for (Product product : cart.getProducts()) {
-            order.setProduct(product);
+        for (CartProduct cartProduct : cart.getCartProducts()) {
+            order.setProduct(cartProduct.getProduct());
             order.setCount(1);
             order.setUser(userService.findByUsername(authentication.getName()));
 
