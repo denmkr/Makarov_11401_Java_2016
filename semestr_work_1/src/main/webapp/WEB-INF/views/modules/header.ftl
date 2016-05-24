@@ -68,7 +68,7 @@
                 <@security.authorize access="isAuthenticated()">
                     <div class="user">
                         <img src="/images/user.png">
-                        <a href="/user">${username}</a>
+                        <a href="/user">${username.username}</a>
                     </div>
                 </@security.authorize>
 

@@ -103,7 +103,7 @@
     </header>
 
     <div class="table_panel">
-        <#include "ajax/products_content.ftl">
+        <#include "ajax/products_upload_content.ftl">
     </div>
 
     <footer>

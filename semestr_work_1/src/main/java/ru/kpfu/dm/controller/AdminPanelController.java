@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.kpfu.dm.service.OrderService;
 import ru.kpfu.dm.service.ProductService;
 import ru.kpfu.dm.service.UserService;
@@ -65,17 +66,38 @@ public class AdminPanelController {
         return "admin/ajax/products_content";
     }
 
+    @RequestMapping(value = "/products/remove", method = RequestMethod.POST)
+    public String addProduct(ModelMap model, @RequestParam(value = "articule", required = true) String articule) {
+        productService.delete(productService.findByArticule(articule).getId());
+        model.addAttribute("products", productService.findAll());
+        return "admin/ajax/products_content";
+    }
+
+    @RequestMapping(value = "/products/upload", method = RequestMethod.GET)
+    public String updateProduct(ModelMap model) {
+        return "admin/ajax/products_upload";
+    }
+
+    @RequestMapping(value = "/products/upload", method = RequestMethod.POST)
+    public String updateProductAjax(ModelMap model) {
+        return "admin/ajax/products_upload_content";
+    }
+
     @RequestMapping(value = "/information", method = RequestMethod.GET)
     public String information(ModelMap model) {
-        model.addAttribute("information", productService.findAll());
+        model.addAttribute("users_count", userService.countOfUsers());
+        model.addAttribute("orders_count", orderService.countOfOrdersToday());
         return "admin/information";
     }
 
     @RequestMapping(value = "/information", method = RequestMethod.POST)
     public String informationAjax(ModelMap model) {
-        model.addAttribute("information", productService.findAll());
+        model.addAttribute("users_count", userService.countOfUsers());
+        model.addAttribute("orders_count", orderService.countOfOrdersToday());
+
         return "admin/ajax/information_content";
     }
+
 
 }
 

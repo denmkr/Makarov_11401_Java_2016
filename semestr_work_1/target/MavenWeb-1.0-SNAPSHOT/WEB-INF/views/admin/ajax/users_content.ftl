@@ -3,7 +3,6 @@
 
         <table class="table">
             <thead>
-            <th>id</th>
             <th>Username</th>
             <th>Email</th>
             <th>Дата регистрации</th>
@@ -11,10 +10,9 @@
             <tbody>
                 <#list users as user>
                 <tr>
-                    <td><a>${user.id}</a></td>
                     <td><a>${user.username}</a></td>
                     <td><a>${user.email}</a></td>
-                    <td><a></a></td>
+                    <td><a><#if user.date??>${user.date}</#if></a></td>
                 </tr>
                 </#list>
             </tbody>

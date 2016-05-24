@@ -89,6 +89,8 @@
                 <li><div class="elem"><a>Загрузка товаров</a></div></li>
             </ul>
         </li>
+        <li><a rel="apps" class="elem"><img src="/images/apps.png">
+            Заявки</a></li>
     </ul>
 </aside>
 
@@ -102,8 +104,10 @@
 
     </header>
 
+
+
     <div class="table_panel">
-        <#include "ajax/products_content.ftl">
+        <#include "ajax/information_content.ftl">
     </div>
 
     <footer>

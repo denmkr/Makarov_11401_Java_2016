@@ -111,9 +111,9 @@
                                         <div class="both"></div>
                                         <div class="search_mode_form">
                                             <div class="search_mode_form_select_div">
-                                                <select>
-                                                    <option>Текущий каталог</option>
-                                                    <option>Весь каталог</option>
+                                                <select name="search_type" onchange="filterProducts()">
+                                                    <option value="name">По наименованию</option>
+                                                    <option value="articule">По артикулу</option>
                                                 </select>
                                             </div>
                                         </div>

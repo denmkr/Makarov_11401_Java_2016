@@ -53,7 +53,7 @@
 </div>
 
 <!-- Боковая панель -->
-<aside class="animated slideInLeft">
+<aside>
     <div class="logo">
         <div class="logo_text">
             <div class="logo_text_head">Отражение</div>
@@ -63,12 +63,22 @@
     <ul class="menu">
         <li><a rel="information" class="elem"><img src="/images/info.png">
             Информация</a></li>
-        <li><a rel="users" class="elem"><img src="/images/users.png">
-            Пользователи</a></li>
+        <li>
+            <div rel="users" class="elem">
+                <img src="/images/users.png">
+                <a>Пользователи</a>
+                <div class="menu_icon closed"></div>
+            </div>
+            <ul class="sub_menu">
+                <li><div class="elem"><a>Добавление пользователя</a></div></li>
+                <li><div class="elem"><a>Удаление пользователя</a></div></li>
+                <li><div class="elem"><a>Изменение роли пользователя</a></div></li>
+            </ul>
+        </li>
         <li><a rel="orders" class="elem"><img src="/images/orders.png">
             Заказы</a></li>
         <li>
-            <div rel="products" class="elem selected">
+            <div rel="products" class="elem">
                 <img src="/images/products.png">
                 <a>Товары</a>
                 <div class="menu_icon closed"></div>

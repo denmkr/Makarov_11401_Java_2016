@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import ru.kpfu.dm.modul.XMLParser;
 
 import javax.servlet.http.HttpSession;
 
@@ -58,11 +59,11 @@ public class UploadFileController {
         }
     }
 
-    @RequestMapping(value = "/uploadMultipleFile", method = RequestMethod.POST)
-    public @ResponseBody
-    String uploadMultipleFile(@RequestParam("name") String[] names,
-                                     @RequestParam("file") MultipartFile[] files,
-                                     HttpSession session) {
+    @RequestMapping(value = "/admin/products/uploadMultipleFile", method = RequestMethod.POST)
+    public String uploadMultipleFile(@RequestParam("file") MultipartFile[] files, HttpSession session) {
+        String names[] = new String[2];
+        names[0] = "import.xml";
+        names[1] = "offers.xml";
 
         if (files.length != names.length)
             return "Mandatory information missing";
@@ -97,7 +98,8 @@ public class UploadFileController {
                 return "You failed to upload " + name + " => " + e.getMessage();
             }
         }
-        return message;
+
+        return "redirect:/admin/products/update";
     }
 
     @RequestMapping(value = "upload")

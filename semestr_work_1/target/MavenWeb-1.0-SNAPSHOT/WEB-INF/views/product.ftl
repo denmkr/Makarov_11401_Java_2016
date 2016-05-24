@@ -18,19 +18,37 @@
     </div>
 </header>
 
+
 <!-- Главный блок -->
 <div class="main">
-    <div class="back contacts" data-stellar-background-ratio="0.5">
+    <div class="back catalog" data-stellar-background-ratio="0.5">
         <div class="title">Товар</div>
     </div>
+    <div class="inside">
+        <div class="content page">
+            <div class="picture">
+                <img style="width: 100%;" src="/images/no-image.png">
+            </div>
+            <div class="information">
+                <div class="group"><#if product.productGroup.parentGroup.parentGroup??>${product.productGroup.parentGroup.parentGroup.name}</#if> <#if product.productGroup.parentGroup??>${product.productGroup.parentGroup.name}</#if> ${product.productGroup.name}</div>
+                <div class="name">${product.name}</div>
+                <div class="price">${product.price} ${product.currency}.</div>
+                <div onclick="addToCart('${product.articule}')" class="addtocart">Добавить в корзину</div>
+                <div class="add_information">
+                    <div class="stock">
+                        <img src="/images/stock.png">
+                        <div class="title">На складе</div>
+                        <div class="text">${product.stock}</div>
+                    </div>
+                    <div class="articule">
+                        <img src="/images/price.png">
+                        <div class="title">Артикул</div>
+                        <div class="text">${product.articule}</div>
+                    </div>
+                </div>
 
-    <div>
-        <div><#if product.productGroup.parentGroup.parentGroup??>${product.productGroup.parentGroup.parentGroup.name}</#if> <#if product.productGroup.parentGroup??>${product.productGroup.parentGroup.name}</#if> ${product.productGroup.name}</div>
-        <div>${product.name}</div>
-        <div>${product.articule}</div>
-        <div>${product.stock}</div>
-        <div>${product.price}</div>
-        <div>${product.currency}</div>
+            </div>
+        </div>
     </div>
 </div>
 

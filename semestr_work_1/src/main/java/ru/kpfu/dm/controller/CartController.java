@@ -81,7 +81,10 @@ public class CartController {
             cart = cartProductService.getCart();
         }
 
-        model.addAttribute("cart_size", cart.getSize());
+        CartSize size = new CartSize();
+        size.setSize(cart.getSize());
+
+        model.addAttribute("cart_size", size);
         return "ajax/cart_size";
     }
 
@@ -104,7 +107,10 @@ public class CartController {
             cart = cartProductService.getCart();
         }
 
-        model.addAttribute("cart_size", cart.getSize());
+        CartSize size = new CartSize();
+        size.setSize(cart.getSize());
+
+        model.addAttribute("cart_size", size);
         return "ajax/cart_size";
     }
 

@@ -50,6 +50,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Long countOfUsers() {
+        return userRepository.countOfUsers();
+    }
+
+    @Override
     @Transactional
     public User delete(long id) {
         User deletedUser = userRepository.findOne(id);

@@ -2,10 +2,32 @@ var page;
 
 $(document).ready(function () {
 
+    $("aside .menu li").addClass("animated fadeInLeft");
+
     $("aside .menu li .elem").click(function (event) {
+
+
+        if ($(this).children(".menu_icon").hasClass("opened")) {
+            $(this).children(".menu_icon").removeClass("opened");
+            $(this).children(".menu_icon").addClass("closed");
+
+            $(this).siblings(".sub_menu").toggle(250);
+        }
+        else {
+            $(this).children(".menu_icon").removeClass("closed");
+            $(this).children(".menu_icon").addClass("opened");
+
+            $(this).siblings(".sub_menu").toggle(250);
+        }
+
         event.stopPropagation();
+
+        $("aside .menu li .elem").removeClass('current');
+        $(this).addClass('current');
+
         page = $(this).attr("rel");
         getPage();
+
     });
 
 });

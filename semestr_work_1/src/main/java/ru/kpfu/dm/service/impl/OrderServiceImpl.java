@@ -50,4 +50,9 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> getOrders() {
         return orderRepository.findAll();
     }
+
+    @Override
+    public Long countOfOrdersToday() {
+        return orderRepository.countOfOrdersToday();
+    }
 }

@@ -3,6 +3,7 @@ package ru.kpfu.dm.service;
 import ru.kpfu.dm.entity.Cart;
 import ru.kpfu.dm.entity.Order;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -11,5 +12,7 @@ import java.util.List;
 public interface OrderService {
     boolean createOrder(Cart cart);
     List<Order> getOrders();
+
+    Long countOfOrdersToday();
 }
 

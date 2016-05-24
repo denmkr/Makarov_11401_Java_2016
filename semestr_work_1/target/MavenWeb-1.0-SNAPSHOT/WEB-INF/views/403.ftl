@@ -35,14 +35,16 @@
             <a href="#">
                 <div class="cart">
                     <img src="/images/cart.png">
-                    <a class="size">12</a>
+                    <span class="size">
+                        <#include "ajax/cart_size.ftl">
+                    </span>
                     <span class="title">Корзина</span>
                 </div>
             </a>
             <div class="user">
                 <img src="/images/user.png">
             <@security.authorize access="isAuthenticated()">
-                <a href="/user">${username}</a>
+                <a href="/user">${username.name}</a>
             </@security.authorize>
             <@security.authorize access="isAnonymous()">
                 <span>Войти</span>

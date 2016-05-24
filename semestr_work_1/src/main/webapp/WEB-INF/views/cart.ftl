@@ -25,7 +25,7 @@
         <div class="title">Корзина</div>
     </div>
     <div class="inside">
-        <div style="width: 94%;" class="content">
+        <div class="content page">
             <div class="cart-container">
                 <#include "ajax/cart_content.ftl">
             </div>

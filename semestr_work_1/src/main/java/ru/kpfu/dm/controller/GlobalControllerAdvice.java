@@ -7,6 +7,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.kpfu.dm.entity.Cart;
+import ru.kpfu.dm.entity.CartSize;
+import ru.kpfu.dm.entity.User;
 import ru.kpfu.dm.service.CartProductService;
 
 import javax.servlet.http.HttpSession;
@@ -24,13 +26,15 @@ public final class GlobalControllerAdvice {
     CartProductService cartProductService;
 
     @ModelAttribute("username")
-    public String getUsername() {
+    public User getUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return authentication.getName();
+        User user = new User();
+        user.setUsername(authentication.getName());
+        return user;
     }
 
     @ModelAttribute
-    public void getCartSize(HttpSession session, ModelMap model) {
+    public void getCart(HttpSession session, ModelMap model) {
         Cart cart;
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication instanceof AnonymousAuthenticationToken) {
@@ -38,8 +42,10 @@ public final class GlobalControllerAdvice {
             cart = (Cart) session.getAttribute("cart");
         }
         else cart = cartProductService.getCart();
+        CartSize size = new CartSize();
+        size.setSize(cart.getSize());
 
-        model.addAttribute("cart_size", cart.getSize());
+        model.addAttribute("cart_size", size);
     }
 
 

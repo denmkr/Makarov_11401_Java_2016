@@ -2,8 +2,6 @@ var groupId = "";
 
 $(document).ready(function () {
 
-    $(".main .content").css("min-height", $("html").height() - 400);
-
     setCurrentMenu();
 
     if (window.location.pathname != "/signin" && window.location.pathname != "/signup" && window.location.pathname != "/admin") {
@@ -12,6 +10,8 @@ $(document).ready(function () {
         var pathArray = window.location.pathname.split( '/' );
 
         if (pathArray[1] == "catalog") {
+            $(".main .content").css("min-height", $("html").height() - 400);
+
             $(".main aside").addClass("animated fadeInUp");
             $(".main .content").addClass("animated fadeInUp");
 
@@ -69,8 +69,12 @@ $(window).load(function() {
     }
 });
 
-$(window).resize(function(){
-    $(".main .content").css("min-height", $("html").height() - 400);
+$(window).resize(function() {
+    var pathArray = window.location.pathname.split( '/' );
+
+    if (pathArray[1] == "catalog") {
+        $(".main .content").css("min-height", $("html").height() - 400);
+    }
 });
 
 
