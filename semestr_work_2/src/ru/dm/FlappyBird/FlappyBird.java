@@ -35,9 +35,8 @@ public class FlappyBird extends Application {
     Pane appRoot;
     Pane gameRoot;
 
-    Rectangle bird;
+    Bird bird;
 
-    Point2D speed;
     AnimationTimer timer;
 
 
@@ -47,18 +46,13 @@ public class FlappyBird extends Application {
         appRoot = FXMLLoader.load(getClass().getResource("flappybird.fxml")); // Загрузка всех панелей и элементов из файла xml
 
         gameRoot = (Pane) appRoot.lookup("#gameRoot");
-        bird = new Rectangle(20, 20, Color.RED);
+        bird = new Bird();
 
-        bird.setLayoutY(400);
 
 
         gameRoot.getChildren().add(bird);
 
         return appRoot;
-    }
-
-    public void jump() {
-        speed = new Point2D(4, -16); // Прыжок
     }
 
     @Override
@@ -71,7 +65,7 @@ public class FlappyBird extends Application {
             @Override
             public void handle(MouseEvent event) {
                 timer.start();
-                jump();
+                bird.jump();
             }
         });
 
@@ -89,25 +83,13 @@ public class FlappyBird extends Application {
 
     public void update() {
 
-        if (speed.getY() < 5) {
-            speed = speed.add(0, 1);
+        if (bird.speed.getY() < 5) {
+            bird.speed = bird.speed.add(0, 1);
         }
 
-        moveY((int) speed.getY());
+        bird.moveY((int) bird.speed.getY());
     }
 
-    public void moveY(int value) {
-
-        int moveDown;
-        if (value > 0) moveDown = 1;
-        else moveDown = -1;
-
-        for (int i = 0; i < Math.abs(value); i++) {
-
-            bird.setTranslateY(bird.getTranslateY() + moveDown);
-
-        }
-    }
 
     /* Запуск */
     public static void main(String[] args) {
