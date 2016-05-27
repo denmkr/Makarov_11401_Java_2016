@@ -35,6 +35,7 @@ public class FlappyBird extends Application {
     Pane appRoot;
     Pane gameRoot;
 
+    public static List<Wall> walls;
     Bird bird;
 
     AnimationTimer timer;
@@ -47,13 +48,39 @@ public class FlappyBird extends Application {
 
         gameRoot = (Pane) appRoot.lookup("#gameRoot");
         bird = new Bird();
+        walls = new ArrayList<Wall>();
 
-
+        generateWalls();
 
         gameRoot.getChildren().add(bird);
 
         return appRoot;
     }
+
+    /* Генерируем стены */
+    private void generateWalls() {
+        for (int i=0; i<100; i++) {
+            int enter = 160 + new Random().nextInt(210 - 160 + 1); // min + (max - min + 1)
+            int height = new Random().nextInt(600 - enter - 48);
+
+            int distance = 550 + new Random().nextInt(700 - 550 + 1); // min + (max - min + 1)
+
+            Wall wall = new Wall(height);
+            wall.setTranslateX(i * distance + 100);
+            wall.setTranslateY(0);
+
+            walls.add(wall);
+
+            Wall wall2 = new Wall(600 - enter - height);
+            wall2.setTranslateX(i * distance + 100);
+            wall2.setTranslateY(height + enter);
+
+            walls.add(wall2);
+
+            gameRoot.getChildren().addAll(wall, wall2);
+        }
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
