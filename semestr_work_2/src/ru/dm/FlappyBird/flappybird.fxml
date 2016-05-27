@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane id="applicationRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane id="gameRoot" prefHeight="600.0" prefWidth="800.0" />
+      <Pane id="informationRoot" disable="true" layoutX="200.0" layoutY="200.0" opacity="0.0" prefHeight="200.0" prefWidth="400.0">
+         <children>
+            <Label id="resultLabel" layoutX="66.0" layoutY="40.0" text="Ваш результат: ">
+               <font>
+                  <Font size="34.0" />
+               </font>
+            </Label>
+            <Button id="againButton" layoutX="164.0" layoutY="136.0" mnemonicParsing="false" text="Еще раз" />
+         </children>
+      </Pane>
+      <Label id="scoreLabel" text="0" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+         <padding>
+            <Insets left="20.0" top="20.0" />
+         </padding>
+      </Label>
+   </children>
+</Pane>
