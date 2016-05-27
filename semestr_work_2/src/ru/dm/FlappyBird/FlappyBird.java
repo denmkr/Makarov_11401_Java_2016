@@ -2,6 +2,8 @@ package ru.dm.FlappyBird;
 
 import javafx.animation.*;
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -114,12 +116,23 @@ public class FlappyBird extends Application {
             bird.speed = bird.speed.add(0, 1);
         }
 
+        bird.moveX((int) bird.speed.getX());
         bird.moveY((int) bird.speed.getY());
+
+        /* Движение панели, если птичка достигает 200 пикселей по оси X */
+        bird.translateXProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                int offset = newValue.intValue();
+                if (offset > 200) gameRoot.setLayoutX(-(offset - 200));
+            }
+        });
     }
 
 
     /* Запуск */
     public static void main(String[] args) {
+
         launch(args);
     }
 
