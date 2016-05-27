@@ -21,12 +21,9 @@ public class Bird extends Pane {
         rectangle.setWidth(40);
         rectangle.setHeight(28);
 
-        rectangle.setTranslateY(200);
-        rectangle.setTranslateX(100);
-
         speed = new Point2D(0, 0);
         setTranslateY(200);
-        setTranslateX(100);
+        setTranslateX(200);
 
         this.getChildren().addAll(rectangle);
     }
@@ -34,6 +31,18 @@ public class Bird extends Pane {
     public void moveX(int value) {
 
         for (int i = 0; i < value; i++) {
+            for (Wall wall : FlappyBird.walls) {
+                if (this.getBoundsInParent().intersects(wall.getBoundsInParent())) {
+                    if (getTranslateX() + 40 == wall.getTranslateX()) {
+                        crashed = true;
+                    }
+                }
+
+                if (getTranslateX() == wall.getTranslateX()) {
+                    if (wall.getTranslateY() == 0)
+                        FlappyBird.score++;
+                }
+            }
 
             setTranslateX(getTranslateX() + 1);
 
@@ -48,7 +57,23 @@ public class Bird extends Pane {
 
         for (int i = 0; i < Math.abs(value); i++) {
 
-            this.setTranslateY(getTranslateY() + moveDown);
+            /* Врежется в стену */
+            for (Wall wall : FlappyBird.walls) {
+                if (this.getBoundsInParent().intersects(wall.getBoundsInParent())) {
+                    crashed = true;
+                }
+            }
+
+            if (getTranslateY() < 0) {
+                setTranslateY(0);
+                crashed = true; // Врежется в потолок
+            }
+            if (getTranslateY() > (600-28-40)) {
+                setTranslateY(600 - 28 - 40);
+                crashed = true; // Врежется в пол
+            }
+
+            if (!crashed) this.setTranslateY(getTranslateY() + moveDown);
 
         }
     }

@@ -42,6 +42,8 @@ public class FlappyBird extends Application {
 
     AnimationTimer timer;
 
+    public static int score; // Счетчик очков
+
 
     /* Рисуем все элементы игры */
     public Parent createContent() throws Exception {
@@ -93,8 +95,10 @@ public class FlappyBird extends Application {
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                timer.start();
-                bird.jump();
+                if (!bird.crashed) {
+                    timer.start();
+                    bird.jump();
+                }
             }
         });
 
@@ -106,6 +110,10 @@ public class FlappyBird extends Application {
             @Override
             public void handle(long now) {
                 update();
+
+                if (bird.crashed) {
+                    this.stop();
+                }
             }
         };
     }
