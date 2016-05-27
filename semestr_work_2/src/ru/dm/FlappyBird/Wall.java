@@ -10,18 +10,18 @@ import javafx.scene.shape.Rectangle;
  */
 public class Wall extends Pane {
 
-    Rectangle rectangle;
+    ImageView image;
     public int height;
 
     public Wall(int height) {
         this.height = height;
 
-        rectangle = new Rectangle();
+        image = new ImageView(new Image("ru/dm/FlappyBird/images/wall.jpg"));
+        image.setFitWidth(44);
+        image.setFitHeight(height);
 
-        rectangle.setWidth(44);
-        rectangle.setHeight(height);
 
-        this.getChildren().add(rectangle);
+        this.getChildren().add(image);
     }
 
 }

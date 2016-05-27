@@ -14,18 +14,18 @@ public class Bird extends Pane {
     boolean crashed = false;
 
     Point2D speed;
-    public Rectangle rectangle;
+    public ImageView image;
 
     public Bird() {
-        rectangle = new Rectangle();
-        rectangle.setWidth(40);
-        rectangle.setHeight(28);
+        image = new ImageView(new Image("ru/dm/FlappyBird/images/bird.png"));
+        image.setFitWidth(40);
+        image.setFitHeight(28);
 
         speed = new Point2D(0, 0);
         setTranslateY(200);
-        setTranslateX(200);
+        setTranslateX(100);
 
-        this.getChildren().addAll(rectangle);
+        this.getChildren().addAll(image);
     }
 
     public void moveX(int value) {
