@@ -1,0 +1,35 @@
+package ru.dm.controllers;
+
+import javafx.scene.control.MenuItem;
+import ru.dm.MainApplication;
+import javafx.fxml.FXML;
+import ru.dm.Page;
+
+/**
+ * Created by Rus on 25.05.2016.
+ */
+public class MenuController {
+    private MainApplication mainApp;
+
+    public void setMainApp(MainApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+
+    @FXML
+    MenuItem loginItem;
+
+    @FXML
+    private void handleLogin() {
+        if (mainApp.getCurrentPage() != Page.LOGIN) {
+            mainApp.showLogin();
+        }
+    }
+
+    @FXML
+    private void handleUsers() {
+        if (mainApp.getCurrentPage() != Page.USERS) {
+            mainApp.showUsers();
+        }
+    }
+
+}

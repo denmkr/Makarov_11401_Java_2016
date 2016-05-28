@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.dm.controllers.UsersController">
+<children>
+    <TableView fx:id="usersTable" prefHeight="400.0" prefWidth="600.0">
+        <columns>
+            <TableColumn fx:id="name" prefWidth="165.0" text="Username" />
+            <TableColumn fx:id="email" minWidth="0.0" prefWidth="170.0" text="Email" />
+            <TableColumn fx:id="date" prefWidth="264.0" text="Дата регистрации" />
+        </columns>
+    </TableView>
+</children>
+</AnchorPane>
