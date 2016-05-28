@@ -5,22 +5,22 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.dm.controllers.MenuController">
+<BorderPane prefHeight="429.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.dm.controllers.MenuController">
    <top>
        <MenuBar prefHeight="29.0" prefWidth="600.0">
            <menus>
                <Menu mnemonicParsing="false" text="Товары">
                    <items>
                        <MenuItem mnemonicParsing="false" text="Посмотреть" onAction="#handleProducts"/>
-                       <MenuItem mnemonicParsing="false" text="Добавить" onAction="#handleProducts"/>
-                       <MenuItem mnemonicParsing="false" text="Удалить" onAction="#handleProducts"/>
+                       <MenuItem mnemonicParsing="false" text="Добавить" onAction="#handleAddProduct"/>
+                       <MenuItem mnemonicParsing="false" text="Удалить" onAction="#handleRemoveProduct"/>
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Пользователи">
                    <items>
                        <MenuItem mnemonicParsing="false" text="Посмотреть" onAction="#handleUsers" />
-                       <MenuItem mnemonicParsing="false" text="Удалить" />
-                       <MenuItem mnemonicParsing="false" text="Добавить" />
+                       <MenuItem mnemonicParsing="false" text="Добавить" onAction="#handleAddUser"/>
+                       <MenuItem mnemonicParsing="false" text="Удалить" onAction="#handleRemoveUser"/>
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Заказы">
@@ -28,7 +28,11 @@
                        <MenuItem mnemonicParsing="false" text="Посмотреть" onAction="#handleOrders"/>
                    </items>
                </Menu>
-               <Menu mnemonicParsing="false" text="Войти" onAction="#handleLogin" />
+               <Menu mnemonicParsing="false" text="Аккаунт">
+                   <items>
+                       <MenuItem fx:id="loginMenuItem" mnemonicParsing="false" onAction="#handleLogin" text="Войти" />
+                   </items>
+               </Menu>
            </menus>
        </MenuBar>
    </top>

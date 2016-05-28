@@ -16,7 +16,7 @@ public class MenuController {
     }
 
     @FXML
-    MenuItem loginItem;
+    MenuItem loginMenuItem;
 
     @FXML
     private void handleProducts() {
@@ -44,6 +44,33 @@ public class MenuController {
         if (mainApp.getCurrentPage() != Page.USERS) {
             mainApp.showUsers();
         }
+    }
+
+    @FXML
+    private void handleAddUser() {
+        mainApp.showAddUser();
+
+    }
+
+    @FXML
+    private void handleRemoveUser() {
+
+        mainApp.showRemoveUser();
+
+    }
+
+    @FXML
+    private void handleAddProduct() {
+
+        mainApp.showAddProduct();
+
+    }
+
+    @FXML
+    private void handleRemoveProduct() {
+
+        mainApp.showRemoveProduct();
+
     }
 
 }

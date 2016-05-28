@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane style="-fx-background-color: #fff;" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.dm.controllers.AddProductController">
+   <children>
+
+      <Label layoutX="145.0" layoutY="32.0" text="Добавление товара" textFill="#666666">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+
+      <TextField fx:id="articuleField" layoutX="168.0" layoutY="103.0" prefHeight="39.0" prefWidth="264.0" promptText="Артикул" style="-fx-border-color: #fff #fff steelblue #fff; -fx-background-color: #fff;" />
+      <TextField fx:id="nameField" layoutX="168.0" layoutY="142.0" prefHeight="39.0" prefWidth="264.0" promptText="Наименование" style="-fx-border-color: #fff #fff steelblue #fff; -fx-background-color: #fff;" />
+      <TextField fx:id="stockField" layoutX="168.0" layoutY="181.0" prefHeight="39.0" prefWidth="264.0" promptText="Количество на складе" style="-fx-border-color: #fff #fff steelblue #fff; -fx-background-color: #fff;" />
+      <TextField fx:id="priceField" layoutX="168.0" layoutY="220.0" prefHeight="39.0" prefWidth="264.0" promptText="Цена" style="-fx-border-color: #fff #fff steelblue #fff; -fx-background-color: #fff;" />
+      <TextField fx:id="currencyField" layoutX="168.0" layoutY="259.0" prefHeight="39.0" prefWidth="264.0" promptText="Валюта" style="-fx-border-color: #fff #fff steelblue #fff; -fx-background-color: #fff;" />
+      <ChoiceBox fx:id="groups" layoutX="168.0" layoutY="299.0" prefHeight="39.0" prefWidth="264.0" />
+
+      <Button id="addProductButton" alignment="CENTER" layoutX="245.0" layoutY="351.0" mnemonicParsing="false" style="-fx-border-color: steelblue; -fx-background-color: #fff;" text="Добавить" textFill="#3e84d3" onMouseClicked="#handleAddProduct">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+
+   </children>
+</AnchorPane>

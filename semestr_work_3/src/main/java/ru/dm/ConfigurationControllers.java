@@ -14,6 +14,14 @@ public class ConfigurationControllers {
     public FXMLLoader getUsersLoader() {
         return loadView("Users.fxml");
     }
+    @Bean(name = "addUserLoader")
+    public FXMLLoader addUserLoader() {
+        return loadView("UserAdd.fxml");
+    }
+    @Bean(name = "removeUserLoader")
+    public FXMLLoader removeUserLoader() {
+        return loadView("UserRemove.fxml");
+    }
     @Bean(name = "loginLoader")
     public FXMLLoader getLoginLoader() {
         return loadView("Login.fxml");
@@ -25,6 +33,14 @@ public class ConfigurationControllers {
     @Bean(name = "productsLoader")
     public FXMLLoader getProductsLoader() {
         return loadView("Products.fxml");
+    }
+    @Bean(name = "addProductLoader")
+    public FXMLLoader addProductLoader() {
+        return loadView("ProductAdd.fxml");
+    }
+    @Bean(name = "removeProductLoader")
+    public FXMLLoader removeProductLoader() {
+        return loadView("ProductRemove.fxml");
     }
     @Bean(name = "ordersLoader")
     public FXMLLoader getOrdersLoader() {

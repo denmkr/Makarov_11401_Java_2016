@@ -48,8 +48,10 @@ public class OrdersController {
     }
 
     private void initOrders() {
-        if (orders.size() == 0) {
+
             try {
+                orders = FXCollections.observableArrayList();
+
                 RestTemplate restTemplate = new RestTemplate();
                 String url = "http://localhost:8080/api/orders";
                 ObjectMapper objectMapper = new ObjectMapper();
@@ -66,11 +68,10 @@ public class OrdersController {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.initOwner(mainApp.getPrimaryStage());
                 alert.setTitle("Нет соединения с сервером");
-                alert.setContentText("Внимание!Ошибка соединения с сервером!");
+                alert.setContentText("Нет соединения с сервером");
                 alert.showAndWait();
                 mainApp.showLogin();
             }
-        }
     }
 
     @FXML

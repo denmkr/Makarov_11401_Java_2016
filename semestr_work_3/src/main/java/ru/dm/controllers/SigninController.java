@@ -1,15 +1,12 @@
 package ru.dm.controllers;
 
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import ru.dm.MainApplication;
 import ru.dm.entity.User;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.crypto.codec.Base64;
@@ -56,6 +53,8 @@ public class SigninController {
                 mainApp.setUser(user);
                 mainApp.getUser().setPassword(passwordField.getText());
                 mainApp.showUsers();
+
+                mainApp.getMenuController().loginMenuItem.setText("Выйти");
             }
             else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
