@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import ru.kpfu.dm.entity.Order;
+import ru.kpfu.dm.entity.Product;
+import ru.kpfu.dm.entity.ProductGroup;
 import ru.kpfu.dm.entity.User;
+import ru.kpfu.dm.service.OrderService;
+import ru.kpfu.dm.service.ProductService;
 import ru.kpfu.dm.service.UserService;
 
 import java.util.List;
@@ -22,6 +27,10 @@ public class RESTController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    ProductService productService;
+    @Autowired
+    OrderService orderService;
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public @ResponseBody
@@ -29,22 +38,49 @@ public class RESTController {
         return userService.findAll();
     }
 
-    @RequestMapping(value = "/signin", method = RequestMethod.POST)
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
     public @ResponseBody
-    User signin(@RequestParam("username") String username, @RequestParam("password") String password) {
-        System.out.println(username + " " + password);
+    List<Order> getAllOrders() {
+        List<Order> orders = orderService.getOrders();
+
+        for (Order order : orders) {
+            order.getProduct().getProductGroup().setChildGroups(null);
+            order.getProduct().getProductGroup().setParentGroup(null);
+        }
+
+        return orders;
+    }
+
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Product> getAllProducts() {
+        List<Product> products = productService.findAll();
+
+        for (Product product : products) {
+            product.getProductGroup().setChildGroups(null);
+            product.getProductGroup().setParentGroup(null);
+        }
+
+        return products;
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public @ResponseBody
+    User signin(@RequestParam(value = "username") String username, @RequestParam(value = "password") String password) {
+
         User user = userService.findByUsername(username);
 
-        BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder(12);
-        password = bcryptEncoder.encode(password);
-
         if (user != null) {
-            if (!user.getPassword().equals(password))
-                user = null;
-        }
-        else user = null;
+            BCryptPasswordEncoder bcryptEncoder = new BCryptPasswordEncoder(12);
+            bcryptEncoder.encode(password);
 
-        return user;
+            if (bcryptEncoder.matches(password, user.getPassword())){
+                return user;
+            }
+        }
+
+        return null;
+
     }
 
 
