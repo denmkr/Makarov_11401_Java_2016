@@ -19,6 +19,20 @@ public class MenuController {
     MenuItem loginItem;
 
     @FXML
+    private void handleProducts() {
+        if (mainApp.getCurrentPage() != Page.PRODUCTS) {
+            mainApp.showProducts();
+        }
+    }
+
+    @FXML
+    private void handleOrders() {
+        if (mainApp.getCurrentPage() != Page.ORDERS) {
+            mainApp.showOrders();
+        }
+    }
+
+    @FXML
     private void handleLogin() {
         if (mainApp.getCurrentPage() != Page.LOGIN) {
             mainApp.showLogin();

@@ -24,6 +24,14 @@ public class Product {
         this.currency = currency;
     }
 
+    private ProductGroup group;
+
+    public ProductGroup getProductGroup() {
+        return group;
+    }
+    public void setProductGroup(ProductGroup group) {
+        this.group = group;
+    }
 
     public Long getId() {
         return id;

@@ -29,8 +29,6 @@ public class SigninController {
     @FXML
     private TextField usernameField;
     @FXML
-    private Button signinButton;
-    @FXML
     private PasswordField passwordField;
 
     public void setMainApp(MainApplication mainApp) {
@@ -39,23 +37,21 @@ public class SigninController {
 
     @FXML
     private void handleLogin() {
-        String auth = usernameField.getText() + ":" + passwordField.getText();
-        byte[] encodedAuth = Base64.encode(
-                auth.getBytes(Charset.forName("US-ASCII")));
-        String authHeader = "Basic " + new String(encodedAuth);
+
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8080/api/signin";
+        String url = "http://localhost:8080/api/login";
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Authorization", authHeader); //here is some login and pass like this login:pass
+
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
             params.add("username", usernameField.getText());
             params.add("password", passwordField.getText());
             HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(params, headers);
+
             String json = restTemplate.postForEntity(url, request, String.class, params).getBody();
             User user;
-            if (json!=null) {
+            if (json != null) {
                 user = objectMapper.readValue(json, User.class);
                 mainApp.setUser(user);
                 mainApp.getUser().setPassword(passwordField.getText());

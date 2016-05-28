@@ -22,6 +22,14 @@ public class ConfigurationControllers {
     public FXMLLoader getMenuLoader() {
         return loadView("Menu.fxml");
     }
+    @Bean(name = "productsLoader")
+    public FXMLLoader getProductsLoader() {
+        return loadView("Products.fxml");
+    }
+    @Bean(name = "ordersLoader")
+    public FXMLLoader getOrdersLoader() {
+        return loadView("Orders.fxml");
+    }
 
     protected FXMLLoader loadView(String url) {
         InputStream fxmlStream = null;

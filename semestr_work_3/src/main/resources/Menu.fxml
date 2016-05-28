@@ -11,18 +11,24 @@
            <menus>
                <Menu mnemonicParsing="false" text="Товары">
                    <items>
-                       <MenuItem mnemonicParsing="false" text="Добавить" />
-                       <MenuItem mnemonicParsing="false" text="Удалить" />
+                       <MenuItem mnemonicParsing="false" text="Посмотреть" onAction="#handleProducts"/>
+                       <MenuItem mnemonicParsing="false" text="Добавить" onAction="#handleProducts"/>
+                       <MenuItem mnemonicParsing="false" text="Удалить" onAction="#handleProducts"/>
                    </items>
                </Menu>
                <Menu mnemonicParsing="false" text="Пользователи">
                    <items>
+                       <MenuItem mnemonicParsing="false" text="Посмотреть" onAction="#handleUsers" />
                        <MenuItem mnemonicParsing="false" text="Удалить" />
                        <MenuItem mnemonicParsing="false" text="Добавить" />
                    </items>
                </Menu>
-               <Menu mnemonicParsing="false" text="Заказы" />
-               <Menu mnemonicParsing="false" text="Войти" />
+               <Menu mnemonicParsing="false" text="Заказы">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Посмотреть" onAction="#handleOrders"/>
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Войти" onAction="#handleLogin" />
            </menus>
        </MenuBar>
    </top>

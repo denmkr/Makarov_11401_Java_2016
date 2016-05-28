@@ -1,8 +1,6 @@
 package ru.dm;
 
-import ru.dm.controllers.MenuController;
-import ru.dm.controllers.SigninController;
-import ru.dm.controllers.UsersController;
+import ru.dm.controllers.*;
 import ru.dm.entity.User;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,6 +20,14 @@ public class MainApplication extends AbstractJavaFxApplicationSupport {
     @Qualifier("usersLoader")
     @Autowired
     private FXMLLoader usersLoader;
+
+    @Qualifier("productsLoader")
+    @Autowired
+    private FXMLLoader productsLoader;
+
+    @Qualifier("ordersLoader")
+    @Autowired
+    private FXMLLoader ordersLoader;
 
     @Qualifier("loginLoader")
     @Autowired
@@ -93,6 +99,28 @@ public class MainApplication extends AbstractJavaFxApplicationSupport {
             AnchorPane testPage = usersLoader.getRoot();
             rootLayout.setCenter(testPage);
             UsersController controller = usersLoader.getController();
+            controller.setMainApp(this);
+        }
+        else showLogin(); // Панель авторизации
+    }
+
+    public void showProducts() {
+        if (user != null) {
+            currentPage = Page.PRODUCTS;
+            AnchorPane testPage = productsLoader.getRoot();
+            rootLayout.setCenter(testPage);
+            ProductsController controller = productsLoader.getController();
+            controller.setMainApp(this);
+        }
+        else showLogin(); // Панель авторизации
+    }
+
+    public void showOrders() {
+        if (user != null) {
+            currentPage = Page.ORDERS;
+            AnchorPane testPage = ordersLoader.getRoot();
+            rootLayout.setCenter(testPage);
+            OrdersController controller = ordersLoader.getController();
             controller.setMainApp(this);
         }
         else showLogin(); // Панель авторизации
